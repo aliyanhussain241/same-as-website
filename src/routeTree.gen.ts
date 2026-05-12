@@ -10,33 +10,102 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiUploadCvRouteImport } from './routes/api/upload-cv'
+import { Route as ApiParseCvTextRouteImport } from './routes/api/parse-cv-text'
+import { Route as ApiGenerateResumeRouteImport } from './routes/api/generate-resume'
+import { Route as ApiGenerateCoverLetterRouteImport } from './routes/api/generate-cover-letter'
+import { Route as ApiAnalyzeAtsRouteImport } from './routes/api/analyze-ats'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiUploadCvRoute = ApiUploadCvRouteImport.update({
+  id: '/api/upload-cv',
+  path: '/api/upload-cv',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiParseCvTextRoute = ApiParseCvTextRouteImport.update({
+  id: '/api/parse-cv-text',
+  path: '/api/parse-cv-text',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiGenerateResumeRoute = ApiGenerateResumeRouteImport.update({
+  id: '/api/generate-resume',
+  path: '/api/generate-resume',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiGenerateCoverLetterRoute = ApiGenerateCoverLetterRouteImport.update({
+  id: '/api/generate-cover-letter',
+  path: '/api/generate-cover-letter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAnalyzeAtsRoute = ApiAnalyzeAtsRouteImport.update({
+  id: '/api/analyze-ats',
+  path: '/api/analyze-ats',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api/analyze-ats': typeof ApiAnalyzeAtsRoute
+  '/api/generate-cover-letter': typeof ApiGenerateCoverLetterRoute
+  '/api/generate-resume': typeof ApiGenerateResumeRoute
+  '/api/parse-cv-text': typeof ApiParseCvTextRoute
+  '/api/upload-cv': typeof ApiUploadCvRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api/analyze-ats': typeof ApiAnalyzeAtsRoute
+  '/api/generate-cover-letter': typeof ApiGenerateCoverLetterRoute
+  '/api/generate-resume': typeof ApiGenerateResumeRoute
+  '/api/parse-cv-text': typeof ApiParseCvTextRoute
+  '/api/upload-cv': typeof ApiUploadCvRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api/analyze-ats': typeof ApiAnalyzeAtsRoute
+  '/api/generate-cover-letter': typeof ApiGenerateCoverLetterRoute
+  '/api/generate-resume': typeof ApiGenerateResumeRoute
+  '/api/parse-cv-text': typeof ApiParseCvTextRoute
+  '/api/upload-cv': typeof ApiUploadCvRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/api/analyze-ats'
+    | '/api/generate-cover-letter'
+    | '/api/generate-resume'
+    | '/api/parse-cv-text'
+    | '/api/upload-cv'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/api/analyze-ats'
+    | '/api/generate-cover-letter'
+    | '/api/generate-resume'
+    | '/api/parse-cv-text'
+    | '/api/upload-cv'
+  id:
+    | '__root__'
+    | '/'
+    | '/api/analyze-ats'
+    | '/api/generate-cover-letter'
+    | '/api/generate-resume'
+    | '/api/parse-cv-text'
+    | '/api/upload-cv'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApiAnalyzeAtsRoute: typeof ApiAnalyzeAtsRoute
+  ApiGenerateCoverLetterRoute: typeof ApiGenerateCoverLetterRoute
+  ApiGenerateResumeRoute: typeof ApiGenerateResumeRoute
+  ApiParseCvTextRoute: typeof ApiParseCvTextRoute
+  ApiUploadCvRoute: typeof ApiUploadCvRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +117,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/upload-cv': {
+      id: '/api/upload-cv'
+      path: '/api/upload-cv'
+      fullPath: '/api/upload-cv'
+      preLoaderRoute: typeof ApiUploadCvRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/parse-cv-text': {
+      id: '/api/parse-cv-text'
+      path: '/api/parse-cv-text'
+      fullPath: '/api/parse-cv-text'
+      preLoaderRoute: typeof ApiParseCvTextRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/generate-resume': {
+      id: '/api/generate-resume'
+      path: '/api/generate-resume'
+      fullPath: '/api/generate-resume'
+      preLoaderRoute: typeof ApiGenerateResumeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/generate-cover-letter': {
+      id: '/api/generate-cover-letter'
+      path: '/api/generate-cover-letter'
+      fullPath: '/api/generate-cover-letter'
+      preLoaderRoute: typeof ApiGenerateCoverLetterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/analyze-ats': {
+      id: '/api/analyze-ats'
+      path: '/api/analyze-ats'
+      fullPath: '/api/analyze-ats'
+      preLoaderRoute: typeof ApiAnalyzeAtsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiAnalyzeAtsRoute: ApiAnalyzeAtsRoute,
+  ApiGenerateCoverLetterRoute: ApiGenerateCoverLetterRoute,
+  ApiGenerateResumeRoute: ApiGenerateResumeRoute,
+  ApiParseCvTextRoute: ApiParseCvTextRoute,
+  ApiUploadCvRoute: ApiUploadCvRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
