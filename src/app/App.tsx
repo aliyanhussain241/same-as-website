@@ -293,7 +293,7 @@ export default function App() {
             jobData={jobData}
             setJobData={setJobData}
             setStep={setStep}
-            error={error ?? undefined}
+            error={error}
             handleGenerate={handleGenerate}
           />
         )}
@@ -325,7 +325,7 @@ export default function App() {
             jobData={jobData}
             setJobData={setJobData}
             setStep={setStep}
-            error={error ?? undefined}
+            error={error}
             isUploading={isUploading}
             handleCVUpload={handleCVUpload}
             handleGenerateCoverLetter={handleGenerateCoverLetter}

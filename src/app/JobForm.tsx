@@ -9,7 +9,7 @@ interface JobFormProps {
   jobData: JobDescription;
   setJobData: React.Dispatch<React.SetStateAction<JobDescription>>;
   setStep: (step: Step) => void;
-  error: string;
+  error?: string | null;
   handleGenerate: () => Promise<void>;
 }
 

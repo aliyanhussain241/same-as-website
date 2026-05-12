@@ -13,7 +13,7 @@ interface CoverLetterGeneratorProps {
   jobData: JobDescription;
   setJobData: React.Dispatch<React.SetStateAction<JobDescription>>;
   setStep: (step: Step) => void;
-  error: string;
+  error?: string | null;
   isUploading: boolean;
   handleCVUpload: (e: React.ChangeEvent<HTMLInputElement>) => Promise<void>;
   handleGenerateCoverLetter: () => Promise<void>;
