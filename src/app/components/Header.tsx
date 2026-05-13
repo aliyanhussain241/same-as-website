@@ -5,9 +5,8 @@ import { Step } from '../App';
 import rezumiLogo from '@/assets/rezumi-logo.svg';
 
 export const Logo = () => (
-  <div className="flex items-center gap-2 font-bold text-[22px] text-[#111827] select-none z-50 transition-transform duration-200 hover:scale-[1.02]">
-    <img src={rezumiLogo} alt="Rezumi" className="h-9 w-9 object-contain" />
-    <span>Rezumi</span>
+  <div className="flex items-center select-none z-50 transition-transform duration-200 hover:scale-[1.02]">
+    <img src={rezumiLogo} alt="Rezumi" className="h-12 w-auto" />
   </div>
 );
 
