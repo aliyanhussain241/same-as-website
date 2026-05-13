@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X } from 'lucide-react';
 import { Step } from '../App';
-import rezumiLogo from '@/assets/rezumi-logo.svg';
+import rezumiLogo from '@/assets/rezumi-logo.png';
 
 export const Logo = () => (
   <div className="flex items-center select-none z-50 transition-transform duration-200 hover:scale-[1.02]">
-    <img src={rezumiLogo} alt="Rezumi" className="h-12 w-auto" />
+    <img src={rezumiLogo} alt="Rezumi - AI Resume Builder" className="h-12 w-auto" />
   </div>
 );
 
