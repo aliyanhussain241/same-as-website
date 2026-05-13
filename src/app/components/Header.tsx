@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { FileText, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Step } from '../App';
+import rezumiLogo from '@/assets/rezumi-logo.svg';
 
 export const Logo = () => (
-  <div className="flex items-center gap-2 font-bold text-[20px] text-[#111827] select-none z-50 transition-transform duration-200 hover:scale-[1.02]">
-    <div className="bg-[#EA580C] text-white p-1.5 rounded-lg -rotate-3 [box-shadow:2px_2px_0px_#0a0a0a]">
-      <FileText size={20} strokeWidth={2.5} />
-    </div>
-    <span>ResuBeat</span>
+  <div className="flex items-center select-none z-50 transition-transform duration-200 hover:scale-[1.02]">
+    <img src={rezumiLogo} alt="Rezumi" className="h-12 w-auto" />
   </div>
 );
 
