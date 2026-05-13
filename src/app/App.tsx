@@ -20,6 +20,7 @@ import { JobForm } from './JobForm';
 import { GeneratingView } from './GeneratingView';
 import { DoneView } from './DoneView';
 import { CoverLetterGenerator } from './CoverLetterGenerator';
+import { Blog } from './Blog';
 
 export enum Step {
   LANDING,
