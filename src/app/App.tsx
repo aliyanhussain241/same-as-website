@@ -341,32 +341,8 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, y: -20 }}
-            className="flex flex-col items-center justify-center min-h-screen p-8 text-center pt-[68px]"
           >
-            <div className="max-w-2xl mt-12">
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">Career Insights Blog</h2>
-              <p className="text-xl text-[#374151] mb-8 leading-relaxed">
-                Expert tips on beating the ATS, acing interviews, and negotiating the best salary. Coming soon to ResuBeat.
-              </p>
-              <div className="grid sm:grid-cols-2 gap-6 text-left w-full max-w-3xl">
-                <div className="border border-[#0a0a0a]/10 bg-white rounded-2xl overflow-hidden [box-shadow:0_1px_2px_0_rgba(0,0,0,0.05)]">
-                  <div className="h-32 bg-[#e5e7eb] w-full" />
-                  <div className="p-6">
-                    <div className="h-4 bg-[#f3f4f6] rounded w-3/4 mb-3" />
-                    <div className="h-3 bg-[#e5e7eb] rounded w-full mb-2" />
-                    <div className="h-3 bg-[#f3f4f6] rounded w-5/6" />
-                  </div>
-                </div>
-                <div className="border border-[#0a0a0a]/10 bg-white rounded-2xl overflow-hidden [box-shadow:0_1px_2px_0_rgba(0,0,0,0.05)]">
-                  <div className="h-32 bg-[#e5e7eb] w-full" />
-                  <div className="p-6">
-                    <div className="h-4 bg-[#f3f4f6] rounded w-2/3 mb-3" />
-                    <div className="h-3 bg-[#e5e7eb] rounded w-full mb-2" />
-                    <div className="h-3 bg-[#f3f4f6] rounded w-4/5" />
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Blog />
           </motion.div>
         )}
 
