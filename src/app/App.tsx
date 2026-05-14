@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { FileText, Briefcase, Download, ArrowRight, Loader2, Wand2, ArrowLeft, Star, CheckCircle2, Smartphone, Monitor, Sparkles, CheckCircle, Target, CircleDollarSign, Crown, Search, Send, MessageSquare, Gauge, User, Mail, Phone, Linkedin, Image as ImageIcon, GraduationCap, Code2, UploadCloud, Trash2 } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { CoverLetterData, JobDescription, ResumeData, UserData } from "./lib/types";
+import rezumiLogo from "@/assets/rezumi-logo.png";
 import { generateCoverLetter, generateOptimizedResume } from "./lib/gemini";
 import { ResumePreview, DesignId } from "./components/ResumePreview";
 import { toPng } from "html-to-image";
