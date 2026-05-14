@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { FileText, Briefcase, Download, ArrowRight, Loader2, Wand2, ArrowLeft, Star, CheckCircle2, Smartphone, Monitor, Sparkles, CheckCircle, Target, CircleDollarSign, Crown, Search, Send, MessageSquare, Gauge, User, Mail, Phone, Linkedin, Image as ImageIcon, GraduationCap, Code2, UploadCloud, Trash2 } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { CoverLetterData, JobDescription, ResumeData, UserData } from "./lib/types";
+import rezumiLogo from "@/assets/rezumi-logo.png";
 import { generateCoverLetter, generateOptimizedResume } from "./lib/gemini";
 import { ResumePreview, DesignId } from "./components/ResumePreview";
 import { toPng } from "html-to-image";
@@ -518,9 +519,8 @@ const Footer = ({ setStep }: { setStep: (step: Step) => void }) => (
   <footer className="bg-white border-t border-gray-100 py-16 w-full print:hidden">
     <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 text-[#4b5563]">
         <div className="space-y-4">
-          <div className="text-2xl font-bold text-[#1a202c] tracking-tight flex items-center gap-2">
-            <div className="w-8 h-8 bg-[#FF6321] text-white rounded-lg flex items-center justify-center font-serif text-xl">R</div>
-            ResuBeat
+          <div className="flex items-center">
+            <img src={rezumiLogo} alt="Rezumi - AI Resume Builder" className="h-12 w-auto" />
           </div>
           <p className="text-[15px] leading-relaxed">
             The fastest, most effective way to secure your next role. Built with top recruiters and AI.
@@ -533,7 +533,7 @@ const Footer = ({ setStep }: { setStep: (step: Step) => void }) => (
               <li><button onClick={() => setStep(Step.DETAILS)} className="hover:text-[#FF6321] transition-colors text-left">Resume Builder</button></li>
               <li><button onClick={() => setStep(Step.COVER_LETTER)} className="hover:text-[#FF6321] transition-colors text-left">Cover Letter</button></li>
               <li><button onClick={() => setStep(Step.ATS_CHECKER)} className="hover:text-[#FF6321] transition-colors text-left">ATS Resume Checker</button></li>
-              <li><button onClick={() => setStep(Step.PREMIUM)} className="hover:text-[#FF6321] transition-colors text-left">ResuBeat Pro</button></li>
+              <li><button onClick={() => setStep(Step.PREMIUM)} className="hover:text-[#FF6321] transition-colors text-left">Rezumi Pro</button></li>
           </ul>
         </div>
 
@@ -559,7 +559,7 @@ const Footer = ({ setStep }: { setStep: (step: Step) => void }) => (
     </div>
     
     <div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-gray-100 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
-        <div>&copy; {new Date().getFullYear()} ResuBeat. All rights reserved.</div>
+        <div>&copy; {new Date().getFullYear()} Rezumi. All rights reserved.</div>
         <div className="flex gap-6">
             <button onClick={() => setStep(Step.PRIVACY)} className="hover:text-[#1a202c] transition-colors">Privacy</button>
             <button onClick={() => setStep(Step.TERMS)} className="hover:text-[#1a202c] transition-colors">Terms</button>
