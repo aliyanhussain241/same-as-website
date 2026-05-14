@@ -72,19 +72,38 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Rezumi — AI Resume Builder for Remote Jobs" },
+      { name: "description", content: "Create an ATS-optimized resume in 10 minutes with Rezumi's AI builder. Get hired for remote jobs with professional templates and expert career insights." },
+      { name: "author", content: "Rezumi" },
+      { property: "og:title", content: "Rezumi — AI Resume Builder for Remote Jobs" },
+      { property: "og:description", content: "Create an ATS-optimized resume in 10 minutes with Rezumi's AI builder. Get hired for remote jobs with professional templates and expert career insights." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { property: "og:url", content: "https://same-as-website.lovable.app/" },
+      { property: "og:site_name", content: "Rezumi" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "canonical", href: "https://same-as-website.lovable.app/" },
+    ],
+    scripts: [
       {
-        rel: "stylesheet",
-        href: appCss,
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "name": "Rezumi",
+              "url": "https://same-as-website.lovable.app/",
+            },
+            {
+              "@type": "WebSite",
+              "name": "Rezumi",
+              "url": "https://same-as-website.lovable.app/",
+            },
+          ],
+        }),
       },
     ],
   }),

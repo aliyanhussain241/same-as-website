@@ -1,0 +1,7 @@
+# Rezumi
+
+> Rezumi is an AI-powered resume builder that helps job seekers create ATS-optimized resumes for remote jobs in minutes, with cover letters, ATS checking, and career resources.
+
+## Pages
+
+- [Home](/): Build an ATS-optimized resume with AI in 10 minutes.

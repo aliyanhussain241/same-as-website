@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiUploadCvRouteImport } from './routes/api/upload-cv'
 import { Route as ApiParseCvTextRouteImport } from './routes/api/parse-cv-text'
@@ -16,6 +17,11 @@ import { Route as ApiGenerateResumeRouteImport } from './routes/api/generate-res
 import { Route as ApiGenerateCoverLetterRouteImport } from './routes/api/generate-cover-letter'
 import { Route as ApiAnalyzeAtsRouteImport } from './routes/api/analyze-ats'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -49,6 +55,7 @@ const ApiAnalyzeAtsRoute = ApiAnalyzeAtsRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/analyze-ats': typeof ApiAnalyzeAtsRoute
   '/api/generate-cover-letter': typeof ApiGenerateCoverLetterRoute
   '/api/generate-resume': typeof ApiGenerateResumeRoute
@@ -57,6 +64,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/analyze-ats': typeof ApiAnalyzeAtsRoute
   '/api/generate-cover-letter': typeof ApiGenerateCoverLetterRoute
   '/api/generate-resume': typeof ApiGenerateResumeRoute
@@ -66,6 +74,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/analyze-ats': typeof ApiAnalyzeAtsRoute
   '/api/generate-cover-letter': typeof ApiGenerateCoverLetterRoute
   '/api/generate-resume': typeof ApiGenerateResumeRoute
@@ -76,6 +85,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/sitemap.xml'
     | '/api/analyze-ats'
     | '/api/generate-cover-letter'
     | '/api/generate-resume'
@@ -84,6 +94,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/sitemap.xml'
     | '/api/analyze-ats'
     | '/api/generate-cover-letter'
     | '/api/generate-resume'
@@ -92,6 +103,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/sitemap.xml'
     | '/api/analyze-ats'
     | '/api/generate-cover-letter'
     | '/api/generate-resume'
@@ -101,6 +113,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ApiAnalyzeAtsRoute: typeof ApiAnalyzeAtsRoute
   ApiGenerateCoverLetterRoute: typeof ApiGenerateCoverLetterRoute
   ApiGenerateResumeRoute: typeof ApiGenerateResumeRoute
@@ -110,6 +123,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -157,6 +177,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   ApiAnalyzeAtsRoute: ApiAnalyzeAtsRoute,
   ApiGenerateCoverLetterRoute: ApiGenerateCoverLetterRoute,
   ApiGenerateResumeRoute: ApiGenerateResumeRoute,
