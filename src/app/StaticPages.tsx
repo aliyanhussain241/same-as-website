@@ -242,7 +242,7 @@ export const TermsOfService = ({ onNavigate }: { onNavigate: (step: any) => void
               Rezumi<br />
               Latifabad<br />
               Hyderabad, Sindh<br />
-              United States
+              Pakistan
             </p>
           </div>
 
@@ -417,7 +417,7 @@ export const PrivacyPolicy = ({ onNavigate }: { onNavigate: (step: any) => void 
               Rezumi<br />
               Latifabad<br />
               Hyderabad, Sindh<br />
-              United States
+              Pakistan
             </p>
             <p>If you are an EU resident and are not satisfied with our response, you have the right to lodge a complaint with your national Data Protection Authority.</p>
           </div>
