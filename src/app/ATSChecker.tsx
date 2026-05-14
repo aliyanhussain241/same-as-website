@@ -17,7 +17,7 @@ export const ATSChecker = ({ onNavigate }: { onNavigate: (step: any) => void }) 
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    document.title = "Free ATS Resume Checker 2025 — Instant ATS Score & Keyword Analysis | ResuBeat";
+    document.title = "Free ATS Resume Checker 2025 — Instant ATS Score & Keyword Analysis | Rezumi";
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute("content", "Check your resume's ATS score instantly for free. Our ATS resume checker analyzes keyword match, formatting issues, and ATS compatibility — no sign-up required. See your score in seconds.");
   }, []);
@@ -564,7 +564,7 @@ export const ATSChecker = ({ onNavigate }: { onNavigate: (step: any) => void }) 
         <div className="grid md:grid-cols-3 gap-6 mb-24">
           {[
             {q:"I was applying to 50+ jobs and getting zero callbacks. I ran the ATS checker and got a score of 43. The report showed me I was missing 14 keywords from every job description I applied to. I fixed my resume using the AI builder, got a score of 91, and had 4 interview calls in the next 10 days.", a:"Daniel M.", r:"Software Engineer, hired at Microsoft"},
-            {q:"As a nurse with 8 years of experience, I could not understand why I was not getting interviews. The ATS checker showed my resume was in a two-column format that was completely unreadable by ATS. I rebuilt it in the ResuBeat builder and started getting calls within a week.", a:"Amara T.", r:"Registered Nurse, Houston"},
+            {q:"As a nurse with 8 years of experience, I could not understand why I was not getting interviews. The ATS checker showed my resume was in a two-column format that was completely unreadable by ATS. I rebuilt it in the Rezumi builder and started getting calls within a week.", a:"Amara T.", r:"Registered Nurse, Houston"},
             {q:"The keyword gap analysis was eye-opening. My resume had great content but was missing the exact words recruiters were searching for. Once I added the suggested keywords, my ATS score went from 61 to 88 and my interview rate tripled.", a:"Sofia R.", r:"Marketing Manager, London"}
           ].map((t,i)=>(
             <div key={i} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col">
