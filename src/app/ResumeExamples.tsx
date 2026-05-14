@@ -322,7 +322,7 @@ export function ResumeExamples({ onNavigate, onLoadTemplate }: { onNavigate: (st
     window.addEventListener('scroll', handleScroll);
     
     // Inject SEO tags
-    document.title = "Resume Examples 2025 — 500+ Free Professional Resume Samples | ResumeAI";
+    document.title = "Resume Examples 2025 — 500+ Free Professional Resume Samples | Rezumi";
     const metaDesc = document.createElement('meta');
     metaDesc.name = "description";
     metaDesc.content = "Browse 500+ free resume examples and resume samples for every job title and industry in 2025. ATS-optimized, recruiter-approved resume templates that get interviews. Download free.";
@@ -335,7 +335,7 @@ export function ResumeExamples({ onNavigate, onLoadTemplate }: { onNavigate: (st
 
     const linkCanonical = document.createElement('link');
     linkCanonical.rel = "canonical";
-    linkCanonical.href = "https://yoursite.com/resume-examples";
+    linkCanonical.href = "https://same-as-website.lovable.app/resume-examples";
     document.head.appendChild(linkCanonical);
 
     const schema = document.createElement('script');
@@ -345,7 +345,7 @@ export function ResumeExamples({ onNavigate, onLoadTemplate }: { onNavigate: (st
       "@type": "WebPage",
       "name": "Resume Examples 2025 — 500+ Free Professional Resume Samples",
       "description": "Browse 500+ free resume examples and resume samples for every job title and industry in 2025. ATS-optimized and recruiter-approved.",
-      "url": "https://yoursite.com/resume-examples",
+      "url": "https://same-as-website.lovable.app/resume-examples",
       "mainEntity": {
         "@type": "ItemList",
         "name": "Professional Resume Examples",
@@ -380,7 +380,7 @@ export function ResumeExamples({ onNavigate, onLoadTemplate }: { onNavigate: (st
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2 cursor-pointer shrink-0" onClick={() => onNavigate(0)}>
             <div className="w-10 h-10 bg-[#EA580C] text-white rounded-xl flex items-center justify-center font-serif text-2xl font-bold">R</div>
-            <span className="text-xl font-bold text-gray-900 hidden sm:block">ResumeAI</span>
+            <span className="text-xl font-bold text-gray-900 hidden sm:block">Rezumi</span>
           </div>
           
           <div className="hidden lg:flex gap-6 items-center">
