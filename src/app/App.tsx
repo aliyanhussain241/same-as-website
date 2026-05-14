@@ -533,7 +533,7 @@ const Footer = ({ setStep }: { setStep: (step: Step) => void }) => (
               <li><button onClick={() => setStep(Step.DETAILS)} className="hover:text-[#FF6321] transition-colors text-left">Resume Builder</button></li>
               <li><button onClick={() => setStep(Step.COVER_LETTER)} className="hover:text-[#FF6321] transition-colors text-left">Cover Letter</button></li>
               <li><button onClick={() => setStep(Step.ATS_CHECKER)} className="hover:text-[#FF6321] transition-colors text-left">ATS Resume Checker</button></li>
-              <li><button onClick={() => setStep(Step.PREMIUM)} className="hover:text-[#FF6321] transition-colors text-left">ResuBeat Pro</button></li>
+              <li><button onClick={() => setStep(Step.PREMIUM)} className="hover:text-[#FF6321] transition-colors text-left">Rezumi Pro</button></li>
           </ul>
         </div>
 
