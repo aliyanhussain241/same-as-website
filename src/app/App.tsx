@@ -559,7 +559,7 @@ const Footer = ({ setStep }: { setStep: (step: Step) => void }) => (
     </div>
     
     <div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-gray-100 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
-        <div>&copy; {new Date().getFullYear()} ResuBeat. All rights reserved.</div>
+        <div>&copy; {new Date().getFullYear()} Rezumi. All rights reserved.</div>
         <div className="flex gap-6">
             <button onClick={() => setStep(Step.PRIVACY)} className="hover:text-[#1a202c] transition-colors">Privacy</button>
             <button onClick={() => setStep(Step.TERMS)} className="hover:text-[#1a202c] transition-colors">Terms</button>
