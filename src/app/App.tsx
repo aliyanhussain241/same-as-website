@@ -519,9 +519,8 @@ const Footer = ({ setStep }: { setStep: (step: Step) => void }) => (
   <footer className="bg-white border-t border-gray-100 py-16 w-full print:hidden">
     <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 text-[#4b5563]">
         <div className="space-y-4">
-          <div className="text-2xl font-bold text-[#1a202c] tracking-tight flex items-center gap-2">
-            <div className="w-8 h-8 bg-[#FF6321] text-white rounded-lg flex items-center justify-center font-serif text-xl">R</div>
-            ResuBeat
+          <div className="flex items-center">
+            <img src={rezumiLogo} alt="Rezumi - AI Resume Builder" className="h-12 w-auto" />
           </div>
           <p className="text-[15px] leading-relaxed">
             The fastest, most effective way to secure your next role. Built with top recruiters and AI.
