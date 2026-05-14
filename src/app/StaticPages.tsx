@@ -15,7 +15,7 @@ const Navbar = ({ onNavigate }: { onNavigate: (step: any) => void }) => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
         <div className="flex items-center gap-2 cursor-pointer shrink-0" onClick={() => onNavigate(0)}>
           <div className="w-10 h-10 bg-[#FF6321] text-white rounded-xl flex items-center justify-center font-serif text-2xl font-bold">R</div>
-          <span className="text-xl font-bold text-gray-900 hidden sm:block">ResuBeat</span>
+          <span className="text-xl font-bold text-gray-900 hidden sm:block">Rezumi</span>
         </div>
         
         <div className="hidden lg:flex gap-6 items-center">
