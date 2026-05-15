@@ -81,6 +81,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:url", content: "https://same-as-website.lovable.app/" },
       { property: "og:site_name", content: "Rezumi" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Rezumi — AI Resume Builder for Remote Jobs" },
+      { name: "twitter:description", content: "Create an ATS-optimized resume in 10 minutes with Rezumi's AI builder. Get hired for remote jobs with professional templates and expert career insights." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8eded0b9-8c30-494f-b8d4-ab1a23185d88/id-preview-7355f553--7e5051d5-7e6f-49a4-a544-4611af29d93e.lovable.app-1778758666412.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8eded0b9-8c30-494f-b8d4-ab1a23185d88/id-preview-7355f553--7e5051d5-7e6f-49a4-a544-4611af29d93e.lovable.app-1778758666412.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
