@@ -34,6 +34,15 @@ export const Header = ({ step, setStep, windowWidth }: { step?: any, setStep: (s
 
   return (
     <header 
+      <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BLMZ7K478Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BLMZ7K478Q');
+</script>
       className={`fixed top-0 left-0 right-0 h-[68px] z-[1000] transition-all duration-300 print:hidden ${
         isScrolled 
           ? 'bg-white/60 backdrop-blur-lg shadow-[0_2px_12px_rgba(234,88,12,0.08)] border-b border-[#FED7AA]/50' 
