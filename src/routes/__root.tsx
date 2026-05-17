@@ -141,6 +141,7 @@ function RootComponent() {
       <div className="min-h-screen bg-[#f5f5f4] text-[#0a0a0a] font-sans selection:bg-[#FF6321] selection:text-white print:bg-white print:m-0 print:p-0">
         <Header />
         <Outlet />
+        <Footer />
       </div>
     </QueryClientProvider>
   );
