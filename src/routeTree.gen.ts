@@ -16,6 +16,7 @@ import { Route as PremiumRouteImport } from './routes/premium'
 import { Route as InterviewPrepRouteImport } from './routes/interview-prep'
 import { Route as ExamplesRouteImport } from './routes/examples'
 import { Route as CoverLetterRouteImport } from './routes/cover-letter'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AtsCheckerRouteImport } from './routes/ats-checker'
 import { Route as AboutRouteImport } from './routes/about'
@@ -59,6 +60,11 @@ const ExamplesRoute = ExamplesRouteImport.update({
 const CoverLetterRoute = CoverLetterRouteImport.update({
   id: '/cover-letter',
   path: '/cover-letter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogRoute = BlogRouteImport.update({
@@ -112,6 +118,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/ats-checker': typeof AtsCheckerRoute
   '/blog': typeof BlogRoute
+  '/contact': typeof ContactRoute
   '/cover-letter': typeof CoverLetterRoute
   '/examples': typeof ExamplesRoute
   '/interview-prep': typeof InterviewPrepRoute
@@ -130,6 +137,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/ats-checker': typeof AtsCheckerRoute
   '/blog': typeof BlogRoute
+  '/contact': typeof ContactRoute
   '/cover-letter': typeof CoverLetterRoute
   '/examples': typeof ExamplesRoute
   '/interview-prep': typeof InterviewPrepRoute
@@ -149,6 +157,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/ats-checker': typeof AtsCheckerRoute
   '/blog': typeof BlogRoute
+  '/contact': typeof ContactRoute
   '/cover-letter': typeof CoverLetterRoute
   '/examples': typeof ExamplesRoute
   '/interview-prep': typeof InterviewPrepRoute
@@ -169,6 +178,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/ats-checker'
     | '/blog'
+    | '/contact'
     | '/cover-letter'
     | '/examples'
     | '/interview-prep'
@@ -187,6 +197,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/ats-checker'
     | '/blog'
+    | '/contact'
     | '/cover-letter'
     | '/examples'
     | '/interview-prep'
@@ -205,6 +216,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/ats-checker'
     | '/blog'
+    | '/contact'
     | '/cover-letter'
     | '/examples'
     | '/interview-prep'
@@ -224,6 +236,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AtsCheckerRoute: typeof AtsCheckerRoute
   BlogRoute: typeof BlogRoute
+  ContactRoute: typeof ContactRoute
   CoverLetterRoute: typeof CoverLetterRoute
   ExamplesRoute: typeof ExamplesRoute
   InterviewPrepRoute: typeof InterviewPrepRoute
@@ -287,6 +300,13 @@ declare module '@tanstack/react-router' {
       path: '/cover-letter'
       fullPath: '/cover-letter'
       preLoaderRoute: typeof CoverLetterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog': {
@@ -360,6 +380,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AtsCheckerRoute: AtsCheckerRoute,
   BlogRoute: BlogRoute,
+  ContactRoute: ContactRoute,
   CoverLetterRoute: CoverLetterRoute,
   ExamplesRoute: ExamplesRoute,
   InterviewPrepRoute: InterviewPrepRoute,
