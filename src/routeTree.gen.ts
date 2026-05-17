@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SalaryAnalyzerRouteImport } from './routes/salary-analyzer'
 import { Route as ResumeRouteImport } from './routes/resume'
@@ -28,6 +29,11 @@ import { Route as ApiGenerateResumeRouteImport } from './routes/api/generate-res
 import { Route as ApiGenerateCoverLetterRouteImport } from './routes/api/generate-cover-letter'
 import { Route as ApiAnalyzeAtsRouteImport } from './routes/api/analyze-ats'
 
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -133,6 +139,7 @@ export interface FileRoutesByFullPath {
   '/resume': typeof ResumeRoute
   '/salary-analyzer': typeof SalaryAnalyzerRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/terms': typeof TermsRoute
   '/api/analyze-ats': typeof ApiAnalyzeAtsRoute
   '/api/generate-cover-letter': typeof ApiGenerateCoverLetterRoute
   '/api/generate-resume': typeof ApiGenerateResumeRoute
@@ -153,6 +160,7 @@ export interface FileRoutesByTo {
   '/resume': typeof ResumeRoute
   '/salary-analyzer': typeof SalaryAnalyzerRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/terms': typeof TermsRoute
   '/api/analyze-ats': typeof ApiAnalyzeAtsRoute
   '/api/generate-cover-letter': typeof ApiGenerateCoverLetterRoute
   '/api/generate-resume': typeof ApiGenerateResumeRoute
@@ -174,6 +182,7 @@ export interface FileRoutesById {
   '/resume': typeof ResumeRoute
   '/salary-analyzer': typeof SalaryAnalyzerRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/terms': typeof TermsRoute
   '/api/analyze-ats': typeof ApiAnalyzeAtsRoute
   '/api/generate-cover-letter': typeof ApiGenerateCoverLetterRoute
   '/api/generate-resume': typeof ApiGenerateResumeRoute
@@ -196,6 +205,7 @@ export interface FileRouteTypes {
     | '/resume'
     | '/salary-analyzer'
     | '/sitemap.xml'
+    | '/terms'
     | '/api/analyze-ats'
     | '/api/generate-cover-letter'
     | '/api/generate-resume'
@@ -216,6 +226,7 @@ export interface FileRouteTypes {
     | '/resume'
     | '/salary-analyzer'
     | '/sitemap.xml'
+    | '/terms'
     | '/api/analyze-ats'
     | '/api/generate-cover-letter'
     | '/api/generate-resume'
@@ -236,6 +247,7 @@ export interface FileRouteTypes {
     | '/resume'
     | '/salary-analyzer'
     | '/sitemap.xml'
+    | '/terms'
     | '/api/analyze-ats'
     | '/api/generate-cover-letter'
     | '/api/generate-resume'
@@ -257,6 +269,7 @@ export interface RootRouteChildren {
   ResumeRoute: typeof ResumeRoute
   SalaryAnalyzerRoute: typeof SalaryAnalyzerRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  TermsRoute: typeof TermsRoute
   ApiAnalyzeAtsRoute: typeof ApiAnalyzeAtsRoute
   ApiGenerateCoverLetterRoute: typeof ApiGenerateCoverLetterRoute
   ApiGenerateResumeRoute: typeof ApiGenerateResumeRoute
@@ -266,6 +279,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -409,6 +429,7 @@ const rootRouteChildren: RootRouteChildren = {
   ResumeRoute: ResumeRoute,
   SalaryAnalyzerRoute: SalaryAnalyzerRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  TermsRoute: TermsRoute,
   ApiAnalyzeAtsRoute: ApiAnalyzeAtsRoute,
   ApiGenerateCoverLetterRoute: ApiGenerateCoverLetterRoute,
   ApiGenerateResumeRoute: ApiGenerateResumeRoute,
