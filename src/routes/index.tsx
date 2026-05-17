@@ -1,20 +1,23 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { lazy, Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "../app/app.css";
-
-const App = lazy(() => import("../app/App"));
+import { LandingPage } from "../app/LandingPage";
+import { useStepNavigate } from "../app/lib/navigation";
 
 function Index() {
   const [mounted, setMounted] = useState(false);
+  const setStep = useStepNavigate();
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
-  return (
-    <Suspense fallback={null}>
-      <App />
-    </Suspense>
-  );
+  return <LandingPage setStep={setStep} />;
 }
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Rezumi — AI Resume Builder for Remote Jobs" },
+      { name: "description", content: "Create an ATS-optimized resume in 10 minutes with Rezumi's AI builder." },
+    ],
+  }),
   component: Index,
 });

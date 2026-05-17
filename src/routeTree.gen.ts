@@ -9,7 +9,19 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SalaryAnalyzerRouteImport } from './routes/salary-analyzer'
+import { Route as ResumeRouteImport } from './routes/resume'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PremiumRouteImport } from './routes/premium'
+import { Route as InterviewPrepRouteImport } from './routes/interview-prep'
+import { Route as ExamplesRouteImport } from './routes/examples'
+import { Route as CoverLetterRouteImport } from './routes/cover-letter'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as BlogRouteImport } from './routes/blog'
+import { Route as AtsCheckerRouteImport } from './routes/ats-checker'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiUploadCvRouteImport } from './routes/api/upload-cv'
 import { Route as ApiParseCvTextRouteImport } from './routes/api/parse-cv-text'
@@ -17,9 +29,69 @@ import { Route as ApiGenerateResumeRouteImport } from './routes/api/generate-res
 import { Route as ApiGenerateCoverLetterRouteImport } from './routes/api/generate-cover-letter'
 import { Route as ApiAnalyzeAtsRouteImport } from './routes/api/analyze-ats'
 
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalaryAnalyzerRoute = SalaryAnalyzerRouteImport.update({
+  id: '/salary-analyzer',
+  path: '/salary-analyzer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResumeRoute = ResumeRouteImport.update({
+  id: '/resume',
+  path: '/resume',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PremiumRoute = PremiumRouteImport.update({
+  id: '/premium',
+  path: '/premium',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InterviewPrepRoute = InterviewPrepRouteImport.update({
+  id: '/interview-prep',
+  path: '/interview-prep',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExamplesRoute = ExamplesRouteImport.update({
+  id: '/examples',
+  path: '/examples',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoverLetterRoute = CoverLetterRouteImport.update({
+  id: '/cover-letter',
+  path: '/cover-letter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AtsCheckerRoute = AtsCheckerRouteImport.update({
+  id: '/ats-checker',
+  path: '/ats-checker',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -55,7 +127,19 @@ const ApiAnalyzeAtsRoute = ApiAnalyzeAtsRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/ats-checker': typeof AtsCheckerRoute
+  '/blog': typeof BlogRoute
+  '/contact': typeof ContactRoute
+  '/cover-letter': typeof CoverLetterRoute
+  '/examples': typeof ExamplesRoute
+  '/interview-prep': typeof InterviewPrepRoute
+  '/premium': typeof PremiumRoute
+  '/privacy': typeof PrivacyRoute
+  '/resume': typeof ResumeRoute
+  '/salary-analyzer': typeof SalaryAnalyzerRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/terms': typeof TermsRoute
   '/api/analyze-ats': typeof ApiAnalyzeAtsRoute
   '/api/generate-cover-letter': typeof ApiGenerateCoverLetterRoute
   '/api/generate-resume': typeof ApiGenerateResumeRoute
@@ -64,7 +148,19 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/ats-checker': typeof AtsCheckerRoute
+  '/blog': typeof BlogRoute
+  '/contact': typeof ContactRoute
+  '/cover-letter': typeof CoverLetterRoute
+  '/examples': typeof ExamplesRoute
+  '/interview-prep': typeof InterviewPrepRoute
+  '/premium': typeof PremiumRoute
+  '/privacy': typeof PrivacyRoute
+  '/resume': typeof ResumeRoute
+  '/salary-analyzer': typeof SalaryAnalyzerRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/terms': typeof TermsRoute
   '/api/analyze-ats': typeof ApiAnalyzeAtsRoute
   '/api/generate-cover-letter': typeof ApiGenerateCoverLetterRoute
   '/api/generate-resume': typeof ApiGenerateResumeRoute
@@ -74,7 +170,19 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/ats-checker': typeof AtsCheckerRoute
+  '/blog': typeof BlogRoute
+  '/contact': typeof ContactRoute
+  '/cover-letter': typeof CoverLetterRoute
+  '/examples': typeof ExamplesRoute
+  '/interview-prep': typeof InterviewPrepRoute
+  '/premium': typeof PremiumRoute
+  '/privacy': typeof PrivacyRoute
+  '/resume': typeof ResumeRoute
+  '/salary-analyzer': typeof SalaryAnalyzerRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/terms': typeof TermsRoute
   '/api/analyze-ats': typeof ApiAnalyzeAtsRoute
   '/api/generate-cover-letter': typeof ApiGenerateCoverLetterRoute
   '/api/generate-resume': typeof ApiGenerateResumeRoute
@@ -85,7 +193,19 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
+    | '/ats-checker'
+    | '/blog'
+    | '/contact'
+    | '/cover-letter'
+    | '/examples'
+    | '/interview-prep'
+    | '/premium'
+    | '/privacy'
+    | '/resume'
+    | '/salary-analyzer'
     | '/sitemap.xml'
+    | '/terms'
     | '/api/analyze-ats'
     | '/api/generate-cover-letter'
     | '/api/generate-resume'
@@ -94,7 +214,19 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
+    | '/ats-checker'
+    | '/blog'
+    | '/contact'
+    | '/cover-letter'
+    | '/examples'
+    | '/interview-prep'
+    | '/premium'
+    | '/privacy'
+    | '/resume'
+    | '/salary-analyzer'
     | '/sitemap.xml'
+    | '/terms'
     | '/api/analyze-ats'
     | '/api/generate-cover-letter'
     | '/api/generate-resume'
@@ -103,7 +235,19 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/about'
+    | '/ats-checker'
+    | '/blog'
+    | '/contact'
+    | '/cover-letter'
+    | '/examples'
+    | '/interview-prep'
+    | '/premium'
+    | '/privacy'
+    | '/resume'
+    | '/salary-analyzer'
     | '/sitemap.xml'
+    | '/terms'
     | '/api/analyze-ats'
     | '/api/generate-cover-letter'
     | '/api/generate-resume'
@@ -113,7 +257,19 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AtsCheckerRoute: typeof AtsCheckerRoute
+  BlogRoute: typeof BlogRoute
+  ContactRoute: typeof ContactRoute
+  CoverLetterRoute: typeof CoverLetterRoute
+  ExamplesRoute: typeof ExamplesRoute
+  InterviewPrepRoute: typeof InterviewPrepRoute
+  PremiumRoute: typeof PremiumRoute
+  PrivacyRoute: typeof PrivacyRoute
+  ResumeRoute: typeof ResumeRoute
+  SalaryAnalyzerRoute: typeof SalaryAnalyzerRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  TermsRoute: typeof TermsRoute
   ApiAnalyzeAtsRoute: typeof ApiAnalyzeAtsRoute
   ApiGenerateCoverLetterRoute: typeof ApiGenerateCoverLetterRoute
   ApiGenerateResumeRoute: typeof ApiGenerateResumeRoute
@@ -123,11 +279,95 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/salary-analyzer': {
+      id: '/salary-analyzer'
+      path: '/salary-analyzer'
+      fullPath: '/salary-analyzer'
+      preLoaderRoute: typeof SalaryAnalyzerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resume': {
+      id: '/resume'
+      path: '/resume'
+      fullPath: '/resume'
+      preLoaderRoute: typeof ResumeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/premium': {
+      id: '/premium'
+      path: '/premium'
+      fullPath: '/premium'
+      preLoaderRoute: typeof PremiumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/interview-prep': {
+      id: '/interview-prep'
+      path: '/interview-prep'
+      fullPath: '/interview-prep'
+      preLoaderRoute: typeof InterviewPrepRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/examples': {
+      id: '/examples'
+      path: '/examples'
+      fullPath: '/examples'
+      preLoaderRoute: typeof ExamplesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cover-letter': {
+      id: '/cover-letter'
+      path: '/cover-letter'
+      fullPath: '/cover-letter'
+      preLoaderRoute: typeof CoverLetterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ats-checker': {
+      id: '/ats-checker'
+      path: '/ats-checker'
+      fullPath: '/ats-checker'
+      preLoaderRoute: typeof AtsCheckerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -177,7 +417,19 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AtsCheckerRoute: AtsCheckerRoute,
+  BlogRoute: BlogRoute,
+  ContactRoute: ContactRoute,
+  CoverLetterRoute: CoverLetterRoute,
+  ExamplesRoute: ExamplesRoute,
+  InterviewPrepRoute: InterviewPrepRoute,
+  PremiumRoute: PremiumRoute,
+  PrivacyRoute: PrivacyRoute,
+  ResumeRoute: ResumeRoute,
+  SalaryAnalyzerRoute: SalaryAnalyzerRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  TermsRoute: TermsRoute,
   ApiAnalyzeAtsRoute: ApiAnalyzeAtsRoute,
   ApiGenerateCoverLetterRoute: ApiGenerateCoverLetterRoute,
   ApiGenerateResumeRoute: ApiGenerateResumeRoute,
