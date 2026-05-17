@@ -46,7 +46,7 @@ export async function callAIGateway(opts: {
   temperature?: number;
   json?: boolean;
 }): Promise<string> {
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = (globalThis as any).GEMINI_API_KEY ?? process.env.GEMINI_API_KEY;
   if (!apiKey) throw new Error("GEMINI_API_KEY missing");
 
   const model = mapModel(opts.model);
