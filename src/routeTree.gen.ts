@@ -13,6 +13,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ResumeRouteImport } from './routes/resume'
 import { Route as ExamplesRouteImport } from './routes/examples'
 import { Route as CoverLetterRouteImport } from './routes/cover-letter'
+import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AtsCheckerRouteImport } from './routes/ats-checker'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiUploadCvRouteImport } from './routes/api/upload-cv'
@@ -39,6 +40,11 @@ const ExamplesRoute = ExamplesRouteImport.update({
 const CoverLetterRoute = CoverLetterRouteImport.update({
   id: '/cover-letter',
   path: '/cover-letter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AtsCheckerRoute = AtsCheckerRouteImport.update({
@@ -80,6 +86,7 @@ const ApiAnalyzeAtsRoute = ApiAnalyzeAtsRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/ats-checker': typeof AtsCheckerRoute
+  '/blog': typeof BlogRoute
   '/cover-letter': typeof CoverLetterRoute
   '/examples': typeof ExamplesRoute
   '/resume': typeof ResumeRoute
@@ -93,6 +100,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/ats-checker': typeof AtsCheckerRoute
+  '/blog': typeof BlogRoute
   '/cover-letter': typeof CoverLetterRoute
   '/examples': typeof ExamplesRoute
   '/resume': typeof ResumeRoute
@@ -107,6 +115,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/ats-checker': typeof AtsCheckerRoute
+  '/blog': typeof BlogRoute
   '/cover-letter': typeof CoverLetterRoute
   '/examples': typeof ExamplesRoute
   '/resume': typeof ResumeRoute
@@ -122,6 +131,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/ats-checker'
+    | '/blog'
     | '/cover-letter'
     | '/examples'
     | '/resume'
@@ -135,6 +145,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/ats-checker'
+    | '/blog'
     | '/cover-letter'
     | '/examples'
     | '/resume'
@@ -148,6 +159,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/ats-checker'
+    | '/blog'
     | '/cover-letter'
     | '/examples'
     | '/resume'
@@ -162,6 +174,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AtsCheckerRoute: typeof AtsCheckerRoute
+  BlogRoute: typeof BlogRoute
   CoverLetterRoute: typeof CoverLetterRoute
   ExamplesRoute: typeof ExamplesRoute
   ResumeRoute: typeof ResumeRoute
@@ -201,6 +214,13 @@ declare module '@tanstack/react-router' {
       path: '/cover-letter'
       fullPath: '/cover-letter'
       preLoaderRoute: typeof CoverLetterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ats-checker': {
@@ -258,6 +278,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AtsCheckerRoute: AtsCheckerRoute,
+  BlogRoute: BlogRoute,
   CoverLetterRoute: CoverLetterRoute,
   ExamplesRoute: ExamplesRoute,
   ResumeRoute: ResumeRoute,
