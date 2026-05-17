@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SalaryAnalyzerRouteImport } from './routes/salary-analyzer'
 import { Route as ResumeRouteImport } from './routes/resume'
 import { Route as ExamplesRouteImport } from './routes/examples'
 import { Route as CoverLetterRouteImport } from './routes/cover-letter'
@@ -25,6 +26,11 @@ import { Route as ApiAnalyzeAtsRouteImport } from './routes/api/analyze-ats'
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalaryAnalyzerRoute = SalaryAnalyzerRouteImport.update({
+  id: '/salary-analyzer',
+  path: '/salary-analyzer',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ResumeRoute = ResumeRouteImport.update({
@@ -90,6 +96,7 @@ export interface FileRoutesByFullPath {
   '/cover-letter': typeof CoverLetterRoute
   '/examples': typeof ExamplesRoute
   '/resume': typeof ResumeRoute
+  '/salary-analyzer': typeof SalaryAnalyzerRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/analyze-ats': typeof ApiAnalyzeAtsRoute
   '/api/generate-cover-letter': typeof ApiGenerateCoverLetterRoute
@@ -104,6 +111,7 @@ export interface FileRoutesByTo {
   '/cover-letter': typeof CoverLetterRoute
   '/examples': typeof ExamplesRoute
   '/resume': typeof ResumeRoute
+  '/salary-analyzer': typeof SalaryAnalyzerRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/analyze-ats': typeof ApiAnalyzeAtsRoute
   '/api/generate-cover-letter': typeof ApiGenerateCoverLetterRoute
@@ -119,6 +127,7 @@ export interface FileRoutesById {
   '/cover-letter': typeof CoverLetterRoute
   '/examples': typeof ExamplesRoute
   '/resume': typeof ResumeRoute
+  '/salary-analyzer': typeof SalaryAnalyzerRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/analyze-ats': typeof ApiAnalyzeAtsRoute
   '/api/generate-cover-letter': typeof ApiGenerateCoverLetterRoute
@@ -135,6 +144,7 @@ export interface FileRouteTypes {
     | '/cover-letter'
     | '/examples'
     | '/resume'
+    | '/salary-analyzer'
     | '/sitemap.xml'
     | '/api/analyze-ats'
     | '/api/generate-cover-letter'
@@ -149,6 +159,7 @@ export interface FileRouteTypes {
     | '/cover-letter'
     | '/examples'
     | '/resume'
+    | '/salary-analyzer'
     | '/sitemap.xml'
     | '/api/analyze-ats'
     | '/api/generate-cover-letter'
@@ -163,6 +174,7 @@ export interface FileRouteTypes {
     | '/cover-letter'
     | '/examples'
     | '/resume'
+    | '/salary-analyzer'
     | '/sitemap.xml'
     | '/api/analyze-ats'
     | '/api/generate-cover-letter'
@@ -178,6 +190,7 @@ export interface RootRouteChildren {
   CoverLetterRoute: typeof CoverLetterRoute
   ExamplesRoute: typeof ExamplesRoute
   ResumeRoute: typeof ResumeRoute
+  SalaryAnalyzerRoute: typeof SalaryAnalyzerRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ApiAnalyzeAtsRoute: typeof ApiAnalyzeAtsRoute
   ApiGenerateCoverLetterRoute: typeof ApiGenerateCoverLetterRoute
@@ -193,6 +206,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/salary-analyzer': {
+      id: '/salary-analyzer'
+      path: '/salary-analyzer'
+      fullPath: '/salary-analyzer'
+      preLoaderRoute: typeof SalaryAnalyzerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/resume': {
@@ -282,6 +302,7 @@ const rootRouteChildren: RootRouteChildren = {
   CoverLetterRoute: CoverLetterRoute,
   ExamplesRoute: ExamplesRoute,
   ResumeRoute: ResumeRoute,
+  SalaryAnalyzerRoute: SalaryAnalyzerRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   ApiAnalyzeAtsRoute: ApiAnalyzeAtsRoute,
   ApiGenerateCoverLetterRoute: ApiGenerateCoverLetterRoute,
