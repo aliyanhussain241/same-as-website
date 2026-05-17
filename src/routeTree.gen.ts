@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SalaryAnalyzerRouteImport } from './routes/salary-analyzer'
 import { Route as ResumeRouteImport } from './routes/resume'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PremiumRouteImport } from './routes/premium'
 import { Route as InterviewPrepRouteImport } from './routes/interview-prep'
 import { Route as ExamplesRouteImport } from './routes/examples'
@@ -40,6 +41,11 @@ const SalaryAnalyzerRoute = SalaryAnalyzerRouteImport.update({
 const ResumeRoute = ResumeRouteImport.update({
   id: '/resume',
   path: '/resume',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PremiumRoute = PremiumRouteImport.update({
@@ -123,6 +129,7 @@ export interface FileRoutesByFullPath {
   '/examples': typeof ExamplesRoute
   '/interview-prep': typeof InterviewPrepRoute
   '/premium': typeof PremiumRoute
+  '/privacy': typeof PrivacyRoute
   '/resume': typeof ResumeRoute
   '/salary-analyzer': typeof SalaryAnalyzerRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -142,6 +149,7 @@ export interface FileRoutesByTo {
   '/examples': typeof ExamplesRoute
   '/interview-prep': typeof InterviewPrepRoute
   '/premium': typeof PremiumRoute
+  '/privacy': typeof PrivacyRoute
   '/resume': typeof ResumeRoute
   '/salary-analyzer': typeof SalaryAnalyzerRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -162,6 +170,7 @@ export interface FileRoutesById {
   '/examples': typeof ExamplesRoute
   '/interview-prep': typeof InterviewPrepRoute
   '/premium': typeof PremiumRoute
+  '/privacy': typeof PrivacyRoute
   '/resume': typeof ResumeRoute
   '/salary-analyzer': typeof SalaryAnalyzerRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -183,6 +192,7 @@ export interface FileRouteTypes {
     | '/examples'
     | '/interview-prep'
     | '/premium'
+    | '/privacy'
     | '/resume'
     | '/salary-analyzer'
     | '/sitemap.xml'
@@ -202,6 +212,7 @@ export interface FileRouteTypes {
     | '/examples'
     | '/interview-prep'
     | '/premium'
+    | '/privacy'
     | '/resume'
     | '/salary-analyzer'
     | '/sitemap.xml'
@@ -221,6 +232,7 @@ export interface FileRouteTypes {
     | '/examples'
     | '/interview-prep'
     | '/premium'
+    | '/privacy'
     | '/resume'
     | '/salary-analyzer'
     | '/sitemap.xml'
@@ -241,6 +253,7 @@ export interface RootRouteChildren {
   ExamplesRoute: typeof ExamplesRoute
   InterviewPrepRoute: typeof InterviewPrepRoute
   PremiumRoute: typeof PremiumRoute
+  PrivacyRoute: typeof PrivacyRoute
   ResumeRoute: typeof ResumeRoute
   SalaryAnalyzerRoute: typeof SalaryAnalyzerRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -272,6 +285,13 @@ declare module '@tanstack/react-router' {
       path: '/resume'
       fullPath: '/resume'
       preLoaderRoute: typeof ResumeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/premium': {
@@ -385,6 +405,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExamplesRoute: ExamplesRoute,
   InterviewPrepRoute: InterviewPrepRoute,
   PremiumRoute: PremiumRoute,
+  PrivacyRoute: PrivacyRoute,
   ResumeRoute: ResumeRoute,
   SalaryAnalyzerRoute: SalaryAnalyzerRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
