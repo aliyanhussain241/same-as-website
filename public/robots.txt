@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://same-as-website.lovable.app/sitemap.xml
+Sitemap: https://airesumi.com/sitemap.xml
