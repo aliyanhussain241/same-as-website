@@ -90,7 +90,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "canonical", href: "https://same-as-website.lovable.app/" },
+      { rel: "canonical", href: "https://airesumi.com/" },
     ],
     scripts: [
       {
