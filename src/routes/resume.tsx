@@ -197,23 +197,12 @@ function ResumeBuilder() {
     </AnimatePresence>
   );
 }
-
 export const Route = createFileRoute("/resume")({
   head: () => ({
     meta: [
-      { title: "Create Your Resume — AI-Powered Resume Builder | airesumi.com" },
-      { name: "description", content: "Let AI write your resume for you. Tailored to your job, ATS-friendly, and ready to download in minutes." },
-      { name: "robots", content: "index, follow" },
-      { property: "og:title", content: "Create Your Resume — AI Resume Builder | airesumi.com" },
-      { property: "og:description", content: "AI-powered resume builder. ATS-optimized, free, no sign-up needed." },
-      { property: "og:url", content: "https://airesumi.com/resume" },
-      { property: "og:type", content: "website" },
-      { property: "og:image", content: "https://airesumi.com/assets/og-image.png" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [
-      { rel: "canonical", href: "https://airesumi.com/resume" },
+      { title: "Resume Builder — Rezumi" },
+      { name: "description", content: "Build an ATS-optimized resume tailored to your dream role in minutes." },
     ],
   }),
-  component: Resume,
+  component: ResumeBuilder,
 });
