@@ -200,7 +200,7 @@ function ResumeBuilder() {
 export const Route = createFileRoute("/resume")({
   head: () => ({
     meta: [
-      { title: "Resume Builder — Rezumi" },
+      { title: "Resume Builder — Resumi" },
       { name: "description", content: "Build an ATS-optimized resume tailored to your dream role in minutes." },
     ],
   }),
