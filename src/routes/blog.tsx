@@ -19,3 +19,4 @@ head: () => ({
   links: [{ rel: "canonical", href: "https://airesumi.com/blog" }],
 }),
 component: Page,
+});
