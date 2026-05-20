@@ -91,6 +91,14 @@ function isRateLimited(ip: string, path: string): boolean {
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      const url = new URL(request.url);
+      const ip = request.headers.get("cf-connecting-ip") ?? "unknown";
+      if (url.pathname.startsWith("/api/") && isRateLimited(ip, url.pathname)) {
+        return new Response(
+          JSON.stringify({ error: "Too many requests. Wait a moment." }),
+          { status: 429, headers: { "Content-Type": "application/json" } }
+        );
+      }
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
       return await normalizeCatastrophicSsrResponse(response);
