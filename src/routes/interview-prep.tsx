@@ -15,7 +15,7 @@ function Page() {
 export const Route = createFileRoute("/interview-prep")({
   head: () => ({
     meta: [
-      { title: "Interview Question Generator — Rezumi" },
+      { title: "Free AI Interview Question Generator | airesumi.com" },
       { name: "description", content: "Practice with AI-generated interview questions tailored to your role and seniority." },
     ],
   }),
