@@ -37,7 +37,7 @@ export const DoneView: React.FC<DoneViewProps> = ({
       className="max-w-[850px] mx-auto py-12 px-6 print:p-0 print:py-0 print:max-w-none"
     >
       {/* Sticky Action Bar */}
-      <div className="sticky top-2 sm:top-4 z-50 flex flex-wrap justify-between items-center gap-2 sm:gap-0 bg-white/95 backdrop-blur-md border shadow-lg shadow-black/5 rounded-2xl sm:rounded-full px-3 sm:px-4 py-3 mb-8 print:hidden mx-auto w-full max-w-[850px]">
+      <div className="sticky top-[76px] z-40 flex flex-wrap justify-between items-center gap-2 sm:gap-0 bg-white/95 backdrop-blur-md border shadow-lg shadow-black/5 rounded-2xl sm:rounded-full px-3 sm:px-4 py-3 mb-8 print:hidden mx-auto w-full max-w-[850px]">
          <button
             onClick={() => setStep(Step.JOB)}
             className="flex items-center gap-1 sm:gap-2 text-[10px] sm:text-sm font-bold uppercase tracking-widest hover:text-[#FF6321] transition-colors mr-auto sm:mr-0"
