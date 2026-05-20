@@ -357,7 +357,7 @@ export const PrivacyPolicy = ({ onNavigate }: { onNavigate: (step: any) => void 
               <li><strong>Stripe</strong> — Payment processing. Stripe is PCI DSS Level 1 certified. We share only the minimum billing information required to process your payment. Stripe Privacy Policy: stripe.com/privacy</li>
               <li><strong>Google Analytics</strong> — Website analytics (optional, opt-out available). Data is anonymized and aggregated. Google Privacy Policy: policies.google.com/privacy</li>
               <li><strong>Amazon Web Services (AWS)</strong> — Cloud hosting and data storage. AWS maintains SOC 2, ISO 27001, and GDPR compliance certifications. AWS Privacy Policy: aws.amazon.com/privacy</li>
-              <li><strong>Anthropic Claude API</strong> — AI resume generation. When you generate a resume, your input data is sent to Anthropic's API to generate content. Anthropic does not store this data for training purposes under our enterprise agreement. Anthropic Privacy Policy: anthropic.com/privacy</li>
+              <li><strong>Google Gemini API</strong> — AI resume generation. Your data is sent to Google's Gemini API. Google Privacy Policy: policies.google.com/privacy</li>
               <li><strong>Clerk</strong> — User authentication. Handles secure login, password management, and OAuth connections. Clerk is SOC 2 Type II certified. Clerk Privacy Policy: clerk.com/privacy</li>
             </ul>
             <p>We do not use Facebook Pixel, advertising networks, data brokers, or any other third-party tracking services.</p>
