@@ -100,13 +100,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@graph": [
             {
               "@type": "Organization",
-              "name": "Rezumi",
-              "url": "https://same-as-website.lovable.app/",
+              "name": "Resumi",
+              "url": "https://airesumi.com/",
             },
             {
               "@type": "WebSite",
-              "name": "Rezumi",
-              "url": "https://same-as-website.lovable.app/",
+              "name": "Resumi",
+              "url": "https://airesumi.com/",
             },
           ],
         }),
