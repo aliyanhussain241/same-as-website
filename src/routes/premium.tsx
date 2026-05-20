@@ -12,7 +12,7 @@ function PremiumPage() {
     >
       <div className="max-w-4xl mt-16 w-full">
         <div className="inline-flex items-center gap-2 bg-white/10 px-4 py-1.5 rounded-full text-orange-400 font-bold text-sm mb-8 border border-white/10">
-          <Crown size={16} className="fill-orange-400" /> Rezumi Pro
+          <Crown size={16} className="fill-orange-400" /> airesumi Pro
         </div>
         <h2 className="text-4xl sm:text-5xl md:text-[64px] font-bold tracking-tight mb-6 leading-tight">
           Unlock your full <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">career potential.</span>
@@ -43,7 +43,7 @@ function PremiumPage() {
           onClick={() => navigate({ to: "/resume" })}
           className="relative w-full sm:w-auto px-12 py-5 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold text-[18px] rounded-full transition-all hover:scale-105 active:scale-95 shadow-[0_10px_40px_-10px_rgba(249,115,22,0.8)] flex justify-center items-center overflow-hidden group mx-auto mb-20"
         >
-          <span className="relative z-10 flex items-center gap-2">Get Rezumi Pro <ArrowRight size={20} /></span>
+          <span className="relative z-10 flex items-center gap-2">Get airesumi Pro <ArrowRight size={20} /></span>
         </button>
       </div>
     </motion.div>
@@ -54,7 +54,7 @@ export const Route = createFileRoute("/premium")({
   head: () => ({
     meta: [
       { title: "airesumi Pro — Premium AI Resume Tools | airesumi.com" },
-      { name: "description", content: "Unlimited resumes, premium templates, and auto-apply pipeline with Rezumi Pro." },
+      { name: "description", content: "Unlimited resumes, premium templates, and advanced AI tools with airesumi Pro." },
     ],
 links: [{ rel: "canonical", href: "https://airesumi.com/premium" }],
   }),
