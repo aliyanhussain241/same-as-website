@@ -56,6 +56,7 @@ export const Route = createFileRoute("/premium")({
       { title: "Rezumi Pro — Premium AI Resume Tools" },
       { name: "description", content: "Unlimited resumes, premium templates, and auto-apply pipeline with Rezumi Pro." },
     ],
+ links: [{ rel: "canonical", href: "https://airesumi.com/premium" }],
   }),
   component: PremiumPage,
 });
