@@ -203,6 +203,7 @@ export const Route = createFileRoute("/resume")({
       { title: "Resume Builder — Resumi" },
       { name: "description", content: "Build an ATS-optimized resume tailored to your dream role in minutes." },
     ],
+links: [{ rel: "canonical", href: "https://airesumi.com/resume" }],
   }),
   component: ResumeBuilder,
 });
