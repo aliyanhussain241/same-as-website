@@ -20,6 +20,7 @@ import { Route as ExamplesRouteImport } from './routes/examples'
 import { Route as CoverLetterRouteImport } from './routes/cover-letter'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BlogRouteImport } from './routes/blog'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as AtsCheckerRouteImport } from './routes/ats-checker'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -84,6 +85,11 @@ const BlogRoute = BlogRouteImport.update({
   path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AtsCheckerRoute = AtsCheckerRouteImport.update({
   id: '/ats-checker',
   path: '/ats-checker',
@@ -130,6 +136,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/ats-checker': typeof AtsCheckerRoute
   '/blog': typeof BlogRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/contact': typeof ContactRoute
   '/cover-letter': typeof CoverLetterRoute
   '/examples': typeof ExamplesRoute
@@ -151,6 +158,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/ats-checker': typeof AtsCheckerRoute
   '/blog': typeof BlogRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/contact': typeof ContactRoute
   '/cover-letter': typeof CoverLetterRoute
   '/examples': typeof ExamplesRoute
@@ -173,6 +181,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/ats-checker': typeof AtsCheckerRoute
   '/blog': typeof BlogRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/contact': typeof ContactRoute
   '/cover-letter': typeof CoverLetterRoute
   '/examples': typeof ExamplesRoute
@@ -196,6 +205,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/ats-checker'
     | '/blog'
+    | '/blog/$slug'
     | '/contact'
     | '/cover-letter'
     | '/examples'
@@ -217,6 +227,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/ats-checker'
     | '/blog'
+    | '/blog/$slug'
     | '/contact'
     | '/cover-letter'
     | '/examples'
@@ -238,6 +249,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/ats-checker'
     | '/blog'
+    | '/blog/$slug'
     | '/contact'
     | '/cover-letter'
     | '/examples'
@@ -260,6 +272,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AtsCheckerRoute: typeof AtsCheckerRoute
   BlogRoute: typeof BlogRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   ContactRoute: typeof ContactRoute
   CoverLetterRoute: typeof CoverLetterRoute
   ExamplesRoute: typeof ExamplesRoute
@@ -356,6 +369,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/ats-checker': {
       id: '/ats-checker'
       path: '/ats-checker'
@@ -420,6 +440,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AtsCheckerRoute: AtsCheckerRoute,
   BlogRoute: BlogRoute,
+  BlogSlugRoute: BlogSlugRoute,
   ContactRoute: ContactRoute,
   CoverLetterRoute: CoverLetterRoute,
   ExamplesRoute: ExamplesRoute,
