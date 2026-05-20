@@ -15,8 +15,8 @@ function Page() {
 export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
-      { title: "Terms of Service — Rezumi" },
-      { name: "description", content: "Rezumi terms of service." },
+      { title: "Terms of Service | airesumi.com" },
+      { name: "description", content: "airesumi terms of service and usage policy." },
     ],
   }),
   component: Page,
