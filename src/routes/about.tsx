@@ -15,7 +15,7 @@ function Page() {
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Resumi" },
+      { title: "About airesumi — Our Mission | airesumi.com" },
       { name: "description", content: "Learn about Rezumi's mission to help job seekers land remote roles." },
     ],
 links: [{ rel: "canonical", href: "https://airesumi.com/about" }],
