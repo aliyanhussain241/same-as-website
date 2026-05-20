@@ -18,6 +18,7 @@ export const Route = createFileRoute("/about")({
       { title: "About Rezumi" },
       { name: "description", content: "Learn about Rezumi's mission to help job seekers land remote roles." },
     ],
+links: [{ rel: "canonical", href: "https://airesumi.com/about" }],
   }),
   component: Page,
 });
