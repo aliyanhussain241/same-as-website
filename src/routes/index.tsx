@@ -99,5 +99,4 @@ head: () => ({
   ],
 }),
   component: Index,
-
-});" 
+});"
