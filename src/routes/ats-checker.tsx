@@ -15,7 +15,7 @@ function Page() {
 export const Route = createFileRoute("/ats-checker")({
   head: () => ({
     meta: [
-      { title: "ATS Resume Checker — Rezumi" },
+      { title: "Free ATS Resume Checker — Score Your Resume | airesumi.com" },
       { name: "description", content: "Check how your resume scores against Applicant Tracking Systems and get instant fixes." },
     ],
 links: [{ rel: "canonical", href: "https://airesumi.com/ats-checker" }],
