@@ -2,7 +2,6 @@ import React from "react";
 import { motion } from "motion/react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Step } from "./App";
-import { Logo } from "./components/Header";
 import { DesignId } from "./components/ResumePreview";
 
 interface DesignSelectionProps {
@@ -24,9 +23,6 @@ export const DesignSelection: React.FC<DesignSelectionProps> = ({ designId, setD
          <div>
            <span className="text-xs uppercase tracking-widest font-bold text-[#FF6321] mb-2 block">Step 02 / 03</span>
            <h2 className="text-4xl font-bold tracking-tight">Choose Design</h2>
-         </div>
-         <div className="hidden sm:block">
-           <Logo />
          </div>
       </div>
 
@@ -50,7 +46,6 @@ export const DesignSelection: React.FC<DesignSelectionProps> = ({ designId, setD
               }`}
             >
               <div className="bg-[#f5f5f4] rounded-xl h-48 overflow-hidden relative border border-[#f3f4f6] flex items-center justify-center p-2">
-                 {/* Mockups */}
                  {design.id === 'classic' && (
                    <div className="w-full h-full bg-white [box-shadow:0_1px_2px_0_rgba(0,0,0,0.05)] p-3 flex flex-col gap-2">
                       <div className="text-center mb-1 border-b border-[#1f2937] pb-2">
@@ -61,7 +56,6 @@ export const DesignSelection: React.FC<DesignSelectionProps> = ({ designId, setD
                       <div className="w-full h-1 bg-[#e5e7eb] rounded-sm"></div>
                       <div className="w-full h-1 bg-[#e5e7eb] rounded-sm"></div>
                       <div className="w-3/4 h-1 bg-[#e5e7eb] rounded-sm"></div>
-                      
                       <div className="w-12 h-1 bg-[#111827] mt-2 mb-1"></div>
                       <div className="flex justify-between">
                         <div className="w-12 h-1.5 bg-[#1f2937]"></div>
@@ -78,10 +72,8 @@ export const DesignSelection: React.FC<DesignSelectionProps> = ({ designId, setD
                          <div className="h-2.5 w-1/2 bg-[#111827] mb-1"></div>
                          <div className="h-1.5 w-1/3 bg-[#FF6321]"></div>
                       </div>
-                      
                       <div className="w-full h-1 bg-[#e5e7eb] rounded-sm"></div>
                       <div className="w-4/5 h-1 bg-[#e5e7eb] rounded-sm"></div>
-                      
                       <div className="flex items-center gap-2 mt-2 mb-1">
                          <div className="w-12 h-1.5 bg-[#111827]"></div>
                          <div className="flex-1 h-[1px] bg-[#e5e7eb]"></div>
@@ -101,7 +93,6 @@ export const DesignSelection: React.FC<DesignSelectionProps> = ({ designId, setD
                          <div className="h-2 w-16 bg-[#1f2937] mx-auto mb-1.5"></div>
                          <div className="h-1 w-10 bg-[#9ca3af] mx-auto"></div>
                        </div>
-                       
                        <div className="w-10 h-0.5 bg-[#d1d5db] mx-auto mb-2 uppercase tracking-widest"></div>
                        <div className="flex gap-3">
                           <div className="w-6 h-1 bg-[#9ca3af] mt-0.5"></div>
