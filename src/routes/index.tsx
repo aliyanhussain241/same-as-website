@@ -13,7 +13,7 @@ function Index() {
 }
 
 export const Route = createFileRoute("/")({
- head: () => ({
+head: () => ({
   // Title hamesha meta array se bahar hona chahiye
   title: "AI Resume Builder — Free ATS-Optimized Resumes | airesumi.com",
 
