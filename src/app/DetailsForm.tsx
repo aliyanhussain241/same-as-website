@@ -3,7 +3,6 @@ import { motion } from "motion/react";
 import { UploadCloud, Loader2, User, Mail, Phone, Linkedin, Briefcase, ImageIcon, GraduationCap, Trash2, Code2, ArrowLeft, ArrowRight, Wand2 } from "lucide-react";
 import { Step } from "./App";
 import { UserData } from "./lib/types";
-import { Logo } from "./components/Header";
 
 interface DetailsFormProps {
   userData: UserData;
