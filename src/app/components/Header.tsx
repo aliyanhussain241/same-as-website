@@ -6,7 +6,7 @@ import rezumiLogo from '@/assets/rezumi-logo.png';
 
 export const Logo = () => (
   <div className="flex items-center select-none z-50 transition-transform duration-200 hover:scale-[1.02]">
-    <img src={rezumiLogo} alt="Rezumi - AI Resume Builder" className="h-12 w-auto" />
+    <img src={rezumiLogo} alt="airesumi - AI Resume Builder" className="h-12 w-auto" />
   </div>
 );
 
