@@ -127,7 +127,7 @@ function CoverLetterPage() {
 export const Route = createFileRoute("/cover-letter")({
   head: () => ({
     meta: [
-      { title: "AI Cover Letter Generator — Rezumi" },
+      { title: "AI Cover Letter Generator — Resumi" },
       { name: "description", content: "Generate a tailored cover letter that matches your resume and the target job in seconds." },
     ],
 links: [{ rel: "canonical", href: "https://airesumi.com/cover-letter" }],
