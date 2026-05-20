@@ -65,7 +65,29 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
   console.error(consumeLastCapturedError() ?? new Error(`h3 swallowed SSR error: ${body}`));
   return brandedErrorResponse();
 }
+const rateStore = new Map<string, { count: number; reset: number }>();
+const LIMITS: Record<string, number> = {
+  "/api/generate-resume": 5,
+  "/api/generate-cover-letter": 5,
+  "/api/analyze-ats": 10,
+  "/api/upload-cv": 10,
+  "/api/parse-cv-text": 10,
+};
 
+function isRateLimited(ip: string, path: string): boolean {
+  const max = LIMITS[path];
+  if (!max) return false;
+  const key = `${ip}:${path}`;
+  const now = Date.now();
+  const entry = rateStore.get(key);
+  if (!entry || now > entry.reset) {
+    rateStore.set(key, { count: 1, reset: now + 60_000 });
+    return false;
+  }
+  if (entry.count >= max) return true;
+  entry.count++;
+  return false;
+}
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
