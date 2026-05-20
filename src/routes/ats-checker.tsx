@@ -18,6 +18,7 @@ export const Route = createFileRoute("/ats-checker")({
       { title: "ATS Resume Checker — Rezumi" },
       { name: "description", content: "Check how your resume scores against Applicant Tracking Systems and get instant fixes." },
     ],
+links: [{ rel: "canonical", href: "https://airesumi.com/ats-checker" }],
   }),
   component: Page,
 });
