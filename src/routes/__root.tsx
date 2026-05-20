@@ -80,7 +80,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "Rezumi — AI Resume Builder for Remote Jobs" },
       { property: "og:description", content: "Create an ATS-optimized resume in 10 minutes with Rezumi's AI builder. Get hired for remote jobs with professional templates and expert career insights." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://same-as-website.lovable.app/" },
+      { property: "og:url", content: "https://airesumi.com/" },
       { property: "og:site_name", content: "Rezumi" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Rezumi — AI Resume Builder for Remote Jobs" },
