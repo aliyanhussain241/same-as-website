@@ -32,9 +32,6 @@ export const DetailsForm: React.FC<DetailsFormProps> = ({
            <span className="text-xs uppercase tracking-widest font-bold text-[#FF6321] mb-2 block">Step 01 / 03</span>
            <h2 className="text-4xl font-bold tracking-tight">Your Details</h2>
          </div>
-         <div className="hidden sm:block">
-           <Logo />
-         </div>
       </div>
 
       <div className="bg-white border border-[#f3f4f6] rounded-3xl p-6 sm:p-10 lg:p-14 [box-shadow:0_10px_40px_-15px_rgba(0,0,0,0.05)] space-y-12 relative overflow-hidden">
