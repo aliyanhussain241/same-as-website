@@ -12,7 +12,7 @@ function Page() {
 export const Route = createFileRoute("/blog")({
   head: () => ({
     meta: [
-      { title: "Career Blog — Resumi" },
+      { title: "Career Blog — Resume Tips & AI Advice | airesumi.com" },
       { name: "description", content: "Expert advice on resumes, interviews, and landing remote jobs." },
     ],
     links: [{ rel: "canonical", href: "https://airesumi.com/blog" }],
