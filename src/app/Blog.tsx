@@ -251,7 +251,7 @@ export const Blog = () => {
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {posts.map((p) => (
-              <article key={p.id} onClick={() => setActive(p)}
+              <article key={p.id} onClick={() => window.location.href = `/blog/${p.slug}`}
                 className="cursor-pointer bg-white rounded-2xl overflow-hidden border border-[#0a0a0a]/10 hover:shadow-lg transition-shadow">
                 {p.cover_image_url ? (
                   <img src={p.cover_image_url} alt={p.title} className="w-full h-44 object-cover" />
