@@ -15,7 +15,7 @@ function Page() {
 export const Route = createFileRoute("/salary-analyzer")({
   head: () => ({
     meta: [
-      { title: "Salary Analyzer — Rezumi" },
+      { title: "Free Salary Analyzer — Compare Salaries by Role | airesumi.com" },
       { name: "description", content: "Compare salaries across roles, regions, and experience levels." },
     ],
 links: [{ rel: "canonical", href: "https://airesumi.com/salary-analyzer" }],
