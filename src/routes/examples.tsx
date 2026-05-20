@@ -18,6 +18,7 @@ export const Route = createFileRoute("/examples")({
       { title: "Resume Examples by Role — Rezumi" },
       { name: "description", content: "Browse high-impact resume examples across industries and use them as a starting point." },
     ],
+ links: [{ rel: "canonical", href: "https://airesumi.com/examples" }],
   }),
   component: Page,
 });
