@@ -15,8 +15,8 @@ function Page() {
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Rezumi" },
-      { name: "description", content: "Get in touch with the Rezumi team." },
+      { title: "Contact Us | airesumi.com" },
+      { name: "description", content: "Get in touch with the airesumi team." },
     ],
   }),
   component: Page,
