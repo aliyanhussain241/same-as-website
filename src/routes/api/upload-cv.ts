@@ -19,7 +19,7 @@ export const Route = createFileRoute("/api/upload-cv")({
         try {
           const form = await request.formData();
           const file = form.get("cv") as File | null;
-          if (!file) return new Response(JSON.stringify({ error: "No file uploaded" }), { status: 400 });
+          if (file.size > 5 * 1024 * 1024) {   return new Response(JSON.stringify({ error: "File too large. Max 5MB." }), { status: 413 }); }
 
           const { text, dataUrl } = await fileToText(file);
 
