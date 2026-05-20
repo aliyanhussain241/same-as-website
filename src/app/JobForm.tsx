@@ -3,7 +3,6 @@ import { motion } from "motion/react";
 import { ArrowLeft, ArrowRight, Wand2, Target, Building2, Search } from "lucide-react";
 import { Step } from "./App";
 import { JobDescription } from "./lib/types";
-import { Logo } from "./components/Header";
 
 interface JobFormProps {
   jobData: JobDescription;
@@ -27,9 +26,6 @@ export const JobForm: React.FC<JobFormProps> = ({ jobData, setJobData, setStep, 
           <span className="text-xs uppercase tracking-widest font-bold text-[#FF6321] mb-2 block">Step 03 / 03</span>
           <h2 className="text-4xl font-bold tracking-tight">Target Role</h2>
         </div>
-        <div className="hidden sm:block">
-          <Logo />
-        </div>
       </div>
 
       <div className="bg-white border border-[#f3f4f6] rounded-3xl p-6 sm:p-10 lg:p-14 [box-shadow:0_10px_40px_-15px_rgba(0,0,0,0.05)] space-y-10 relative overflow-hidden">
@@ -38,13 +34,13 @@ export const JobForm: React.FC<JobFormProps> = ({ jobData, setJobData, setStep, 
           <div className="bg-[#FF6321] text-white p-2 rounded-xl shrink-0 mt-1"><Target size={20} /></div>
           <div>
             <h3 className="font-bold text-[#111827] text-lg mb-1">Pass the ATS automatically</h3>
-            <p className="text-[#4b5563] text-sm leading-relaxed">Paste the job description of the role you want below. Our AI will instantly map your skills, inject the required keywords, and tailor your experience to match the job requirements.</p>
+            <p className="text-[#4b5563] text-sm leading-relaxed">Paste the job description below and our AI will tailor your resume to match. <span className="text-[#FF6321] font-semibold">All fields are optional</span> — fill them for a targeted resume, or skip and hit Generate for a general one.</p>
           </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
           <div>
-            <label className="block text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-2">Job Title</label>
+            <label className="block text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-2">Job Title <span className="text-gray-400 normal-case font-normal">(Optional)</span></label>
             <div className="relative">
               <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
                 <Search size={18} />
@@ -59,7 +55,7 @@ export const JobForm: React.FC<JobFormProps> = ({ jobData, setJobData, setStep, 
             </div>
           </div>
           <div>
-            <label className="block text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-2">Company Name</label>
+            <label className="block text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-2">Company Name <span className="text-gray-400 normal-case font-normal">(Optional)</span></label>
             <div className="relative">
               <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
                 <Building2 size={18} />
@@ -77,13 +73,13 @@ export const JobForm: React.FC<JobFormProps> = ({ jobData, setJobData, setStep, 
 
         <div>
           <div className="flex justify-between items-baseline mb-2">
-             <label className="block text-[11px] font-bold uppercase tracking-widest text-gray-500">Job Description</label>
+             <label className="block text-[11px] font-bold uppercase tracking-widest text-gray-500">Job Description <span className="text-gray-400 normal-case font-normal">(Optional)</span></label>
           </div>
           <div className="relative">
             <textarea
               rows={8}
               className="w-full bg-[#f9fafb] border border-gray-100 rounded-xl px-5 py-4 focus:ring-2 focus:ring-[#FF6321]/20 focus:border-[#FF6321] focus:bg-white outline-none transition-all resize-y text-[15px] leading-relaxed placeholder:text-gray-400 relative z-10 bg-transparent"
-              placeholder="Paste the full job description here. The more context you provide, the better we can tailor your resume to match the requirements..."
+              placeholder="Paste the full job description here (optional). The more context you provide, the better we can tailor your resume..."
               value={jobData.description}
               onChange={(e) => setJobData({ ...jobData, description: e.target.value })}
             />
@@ -104,9 +100,8 @@ export const JobForm: React.FC<JobFormProps> = ({ jobData, setJobData, setStep, 
             <ArrowLeft size={18} /> <span className="hidden sm:inline">Back</span>
           </button>
           <button
-            disabled={!jobData.description || !jobData.title}
             onClick={handleGenerate}
-            className="group flex items-center gap-3 bg-gradient-to-r from-gray-900 to-black text-white px-8 py-4 rounded-xl font-bold text-base shadow-xl shadow-gray-900/20 hover:shadow-gray-900/30 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-none"
+            className="group flex items-center gap-3 bg-gradient-to-r from-gray-900 to-black text-white px-8 py-4 rounded-xl font-bold text-base shadow-xl shadow-gray-900/20 hover:shadow-gray-900/30 hover:-translate-y-0.5 transition-all"
           >
             <Wand2 size={18} className="text-orange-400" />
             Generate Resume
