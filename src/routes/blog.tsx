@@ -9,14 +9,13 @@ function Page() {
     </motion.div>
   );
 }
-
 export const Route = createFileRoute("/blog")({
-head: () => ({
-  meta: [
-    { title: "Career Blog — Rezumi" },
-    { name: "description", content: "Expert advice on resumes, interviews, and landing remote jobs." },
-  ],
-  links: [{ rel: "canonical", href: "https://airesumi.com/blog" }],
-}),
-component: Page,
+  head: () => ({
+    meta: [
+      { title: "Career Blog — Resumi" },
+      { name: "description", content: "Expert advice on resumes, interviews, and landing remote jobs." },
+    ],
+    links: [{ rel: "canonical", href: "https://airesumi.com/blog" }],
+  }),
+  component: Page,
 });
