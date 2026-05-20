@@ -98,3 +98,6 @@ head: () => ({
     },
   ],
 }),
+  component: Index,
+
+});" 
