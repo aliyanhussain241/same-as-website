@@ -15,7 +15,7 @@ function Page() {
 export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
-      { title: "Privacy Policy — Rezumi" },
+      { title: "Privacy Policy | airesumi.com" },
       { name: "description", content: "How Rezumi handles your data and privacy." },
     ],
   }),
