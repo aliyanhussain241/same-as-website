@@ -53,7 +53,7 @@ function PremiumPage() {
 export const Route = createFileRoute("/premium")({
   head: () => ({
     meta: [
-      { title: "Rezumi Pro — Premium AI Resume Tools" },
+      { title: "airesumi Pro — Premium AI Resume Tools | airesumi.com" },
       { name: "description", content: "Unlimited resumes, premium templates, and auto-apply pipeline with Rezumi Pro." },
     ],
 links: [{ rel: "canonical", href: "https://airesumi.com/premium" }],
