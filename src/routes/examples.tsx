@@ -15,7 +15,7 @@ function Page() {
 export const Route = createFileRoute("/examples")({
   head: () => ({
     meta: [
-      { title: "Resume Examples by Role — Rezumi" },
+      { title: "Resume Examples by Job Role — Free Templates | airesumi.com" },
       { name: "description", content: "Browse high-impact resume examples across industries and use them as a starting point." },
     ],
  links: [{ rel: "canonical", href: "https://airesumi.com/examples" }],
