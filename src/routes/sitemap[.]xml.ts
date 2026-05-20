@@ -8,13 +8,20 @@ export const Route = createFileRoute("/sitemap.xml")({
     handlers: {
       GET: async () => {
         const entries = [
-          { path: "/",       changefreq: "weekly",  priority: "1.0" },
-          { path: "/resume", changefreq: "monthly", priority: "0.8" },
-          { path: "/blog",   changefreq: "weekly",  priority: "0.7" },
-          { path: "/blog/how-to-make-resume-with-ai",   changefreq: "monthly", priority: "0.6" },
-          { path: "/blog/best-ai-resume-builder-free",  changefreq: "monthly", priority: "0.6" },
-          { path: "/blog/ats-resume-guide",             changefreq: "monthly", priority: "0.6" },
-        ];
+{ path: "/",                                    changefreq: "weekly",  priority: "1.0" },
+{ path: "/resume",                              changefreq: "monthly", priority: "0.8" },
+{ path: "/ats-checker",                         changefreq: "monthly", priority: "0.8" },
+{ path: "/cover-letter",                        changefreq: "monthly", priority: "0.8" },
+{ path: "/blog",                                changefreq: "weekly",  priority: "0.7" },
+{ path: "/examples",                            changefreq: "monthly", priority: "0.7" },
+{ path: "/interview-prep",                      changefreq: "monthly", priority: "0.7" },
+{ path: "/salary-analyzer",                     changefreq: "monthly", priority: "0.7" },
+{ path: "/premium",                             changefreq: "monthly", priority: "0.6" },
+{ path: "/contact",                             changefreq: "yearly",  priority: "0.4" },
+{ path: "/blog/how-to-make-resume-with-ai",     changefreq: "monthly", priority: "0.6" },
+{ path: "/blog/best-ai-resume-builder-free",    changefreq: "monthly", priority: "0.6" },
+{ path: "/blog/ats-resume-guide",               changefreq: "monthly", priority: "0.6" },
+];
 
         const today = new Date().toISOString().split("T")[0]; 
 
