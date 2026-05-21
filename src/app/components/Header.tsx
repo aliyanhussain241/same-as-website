@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation, useNavigate } from '@tanstack/react-router';
-import rezumiLogo from '@/assets/airesumi.webp';
+import rezumiLogo from '@/assets/ai-resumi.webp';
 export const Logo = () => (
   <div className="flex items-center select-none z-50 transition-transform duration-200 hover:scale-[1.02]">
     <img src={rezumiLogo} alt="airesumi - AI Resume Builder" className="h-12 w-auto" />
