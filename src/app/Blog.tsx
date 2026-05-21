@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'; import { useNavigate, useLocation } from '@tanstack/react-router';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useLocation } from '@tanstack/react-router';
 import { supabase } from '@/integrations/supabase/client';
 import type { User } from '@supabase/supabase-js';
 
@@ -18,7 +19,9 @@ const slugify = (s: string) =>
   s.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
 export const Blog = () => {
-  const navigate = useNavigate();   const location = useLocation();   const [posts, setPosts] = useState<Post[]>([]);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [posts, setPosts] = useState<Post[]>([]);
   const [active, setActive] = useState<Post | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -37,7 +40,7 @@ export const Blog = () => {
   const [authMode, setAuthMode] = useState<'sign_in' | 'sign_up'>('sign_in');
   const [authMsg, setAuthMsg] = useState<string | null>(null);
 
-  // URL se active post sync karo   useEffect(() => {     const path = location.pathname;     const slugFromUrl = path.startsWith('/blog/') ? path.replace('/blog/', '') : null;     if (slugFromUrl && posts.length > 0) {       const found = posts.find(p => p.slug === slugFromUrl);       if (found) setActive(found);     }     if (path === '/blog') setActive(null);   }, [location.pathname, posts]);    const loadPosts = async () => {
+  const loadPosts = async () => {
     setLoading(true);
     const { data } = await supabase
       .from('blog_posts')
@@ -64,6 +67,17 @@ export const Blog = () => {
     supabase.auth.getSession().then(({ data }) => setUser(data.session?.user ?? null));
     return () => sub.subscription.unsubscribe();
   }, []);
+
+  // URL se active post sync karo
+  useEffect(() => {
+    const path = location.pathname;
+    const slugFromUrl = path.startsWith('/blog/') ? path.replace('/blog/', '') : null;
+    if (slugFromUrl && posts.length > 0) {
+      const found = posts.find(p => p.slug === slugFromUrl);
+      if (found) setActive(found);
+    }
+    if (path === '/blog') setActive(null);
+  }, [location.pathname, posts]);
 
   useEffect(() => {
     if (!user) { setIsAdmin(false); return; }
@@ -124,7 +138,12 @@ export const Blog = () => {
   if (active) {
     return (
       <div className="min-h-screen pt-[100px] pb-20 px-6 max-w-3xl mx-auto">
-        <button onClick={() => { setActive(null); navigate({ to: '/blog' }); }} className="text-[#EA580C] mb-6 text-sm font-medium">← Back to blog</button>
+        <button
+          onClick={() => { setActive(null); navigate({ to: '/blog' }); }}
+          className="text-[#EA580C] mb-6 text-sm font-medium"
+        >
+          ← Back to blog
+        </button>
         {active.cover_image_url && (
           <img src={active.cover_image_url} alt={active.title} className="w-full h-64 object-cover rounded-xl mb-6" />
         )}
@@ -132,7 +151,18 @@ export const Blog = () => {
         {active.published_at && (
           <p className="text-sm text-[#6b7280] mb-8">{new Date(active.published_at).toLocaleDateString()}</p>
         )}
-        <div className="prose prose-lg max-w-none whitespace-pre-wrap text-[#374151] leading-relaxed">{active.content}</div>
+        <div className="prose prose-lg max-w-none whitespace-pre-wrap text-[#374151] leading-relaxed">
+          {active.content}
+        </div>
+        <div className="mt-12 p-6 bg-orange-50 rounded-2xl text-center">
+          <p className="text-lg font-bold text-[#111827] mb-2">Ready to build your resume?</p>
+          <a
+            href="/resume"
+            className="inline-block bg-[#EA580C] text-white px-6 py-3 rounded-full font-semibold hover:bg-orange-600 transition-colors"
+          >
+            Build your free AI resume →
+          </a>
+        </div>
       </div>
     );
   }
@@ -192,7 +222,6 @@ export const Blog = () => {
                     <button onClick={() => supabase.auth.signOut()} className="text-sm underline">Sign out</button>
                   </div>
                 </div>
-
                 {editing && (
                   <div className="bg-white p-5 rounded-xl border mb-5 space-y-3">
                     <input placeholder="Title" value={editing.title || ''} onChange={(e) => setEditing({ ...editing, title: e.target.value })}
@@ -218,7 +247,6 @@ export const Blog = () => {
                     </div>
                   </div>
                 )}
-
                 <div className="space-y-2">
                   {allPosts.map((p) => (
                     <div key={p.id} className="flex items-center justify-between p-3 bg-white rounded-lg border">
@@ -251,8 +279,11 @@ export const Blog = () => {
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {posts.map((p) => (
-              <article key={p.id} onClick={() => { setActive(p); navigate({ to: '/blog/' + p.slug }); }}
-                className="cursor-pointer bg-white rounded-2xl overflow-hidden border border-[#0a0a0a]/10 hover:shadow-lg transition-shadow">
+              <article
+                key={p.id}
+                onClick={() => { setActive(p); navigate({ to: '/blog/' + p.slug }); }}
+                className="cursor-pointer bg-white rounded-2xl overflow-hidden border border-[#0a0a0a]/10 hover:shadow-lg transition-shadow"
+              >
                 {p.cover_image_url ? (
                   <img src={p.cover_image_url} alt={p.title} className="w-full h-44 object-cover" />
                 ) : (
