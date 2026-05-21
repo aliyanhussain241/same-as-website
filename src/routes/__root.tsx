@@ -91,6 +91,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "canonical", href: "https://airesumi.com/" },
+      { rel: "icon", href: "/favicon.webp", type: "image/webp" },
+      { rel: "apple-touch-icon", href: "/favicon.webp" },
     ],
     scripts: [
       {
