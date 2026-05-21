@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import rezumiLogo from "@/assets/rezumi-logo.png";
+import rezumiLogo from "@/assets/ai-resumi.webp";
 
 export const Footer = () => (
   <footer className="bg-white border-t border-gray-100 py-16 w-full print:hidden">
