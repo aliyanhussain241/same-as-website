@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { callAIGateway, safeJSON } from "@/lib/ai-gateway";
+import { createClient } from "@supabase/supabase-js";
 
 async function fileToText(file: File): Promise<{ text?: string; dataUrl?: string }> {
   if (file.type === "application/pdf") {
@@ -17,12 +18,41 @@ export const Route = createFileRoute("/api/upload-cv")({
     handlers: {
       POST: async ({ request }) => {
         try {
+          // ✅ AUTH CHECK
+          const authHeader = request.headers.get("Authorization");
+          if (!authHeader || !authHeader.startsWith("Bearer ")) {
+            return new Response(JSON.stringify({ error: "Unauthorized. Please log in." }), { status: 401 });
+          }
+          const token = authHeader.replace("Bearer ", "");
+          const supabase = createClient(
+            process.env.VITE_SUPABASE_URL!,
+            process.env.VITE_SUPABASE_PUBLISHABLE_KEY!
+          );
+          const { data: { user }, error: authError } = await supabase.auth.getUser(token);
+          if (authError || !user) {
+            return new Response(JSON.stringify({ error: "Invalid or expired session. Please log in again." }), { status: 401 });
+          }
+
           const form = await request.formData();
           const file = form.get("cv") as File | null;
-          if (file.size > 5 * 1024 * 1024) {   return new Response(JSON.stringify({ error: "File too large. Max 5MB." }), { status: 413 }); }
+
+          // ✅ NULL CHECK FIRST
+          if (!file) {
+            return new Response(JSON.stringify({ error: "No file uploaded" }), { status: 400 });
+          }
+
+          // ✅ MIME TYPE VALIDATION
+          const allowedTypes = ["application/pdf", "text/plain"];
+          if (!allowedTypes.includes(file.type)) {
+            return new Response(JSON.stringify({ error: "Invalid file type. Only PDF and TXT allowed." }), { status: 415 });
+          }
+
+          // ✅ SIZE CHECK
+          if (file.size > 5 * 1024 * 1024) {
+            return new Response(JSON.stringify({ error: "File too large. Max 5MB." }), { status: 413 });
+          }
 
           const { text, dataUrl } = await fileToText(file);
-
           const instruction = `Extract the following information from the provided CV into JSON:
 {
   "fullName": "string",
