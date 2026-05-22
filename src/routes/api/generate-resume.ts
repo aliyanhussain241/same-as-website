@@ -7,10 +7,10 @@ export const Route = createFileRoute("/api/generate-resume")({
     handlers: {
       POST: async ({ request }) => {
         try {
-          // ✅ AUTH CHECK - Sirf logged in users use kar sakte hain
+          // ✅ AUTH CHECK
           const authHeader = request.headers.get("Authorization");
           if (!authHeader || !authHeader.startsWith("Bearer ")) {
-            return new Response(JSON.stringify({ error: "Login karein pehle" }), { status: 401 });
+            return new Response(JSON.stringify({ error: "Unauthorized. Please log in." }), { status: 401 });
           }
           const token = authHeader.replace("Bearer ", "");
           const supabase = createClient(
@@ -19,7 +19,7 @@ export const Route = createFileRoute("/api/generate-resume")({
           );
           const { data: { user }, error: authError } = await supabase.auth.getUser(token);
           if (authError || !user) {
-            return new Response(JSON.stringify({ error: "Invalid session" }), { status: 401 });
+            return new Response(JSON.stringify({ error: "Invalid or expired session. Please log in again." }), { status: 401 });
           }
 
           const { userData, jobData } = (await request.json()) as any;
@@ -27,7 +27,7 @@ export const Route = createFileRoute("/api/generate-resume")({
             return new Response(JSON.stringify({ error: "Missing required data" }), { status: 400 });
           }
 
-          // ✅ PROMPT INJECTION PROTECTION - User input clean karo
+          // ✅ PROMPT INJECTION PROTECTION
           const clean = (str: string) => String(str || "").replace(/[<>\[\]]/g, "").slice(0, 2000);
 
           const systemInstruction = `You are an expert Executive Recruiter and ATS Optimization Specialist.
