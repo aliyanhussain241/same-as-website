@@ -1,44 +1,63 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { callAIGateway, safeJSON } from "@/lib/ai-gateway";
+import { createClient } from "@supabase/supabase-js";
 
 export const Route = createFileRoute("/api/generate-resume")({
   server: {
     handlers: {
       POST: async ({ request }) => {
         try {
+          // ✅ AUTH CHECK - Sirf logged in users use kar sakte hain
+          const authHeader = request.headers.get("Authorization");
+          if (!authHeader || !authHeader.startsWith("Bearer ")) {
+            return new Response(JSON.stringify({ error: "Login karein pehle" }), { status: 401 });
+          }
+          const token = authHeader.replace("Bearer ", "");
+          const supabase = createClient(
+            process.env.VITE_SUPABASE_URL!,
+            process.env.VITE_SUPABASE_PUBLISHABLE_KEY!
+          );
+          const { data: { user }, error: authError } = await supabase.auth.getUser(token);
+          if (authError || !user) {
+            return new Response(JSON.stringify({ error: "Invalid session" }), { status: 401 });
+          }
+
           const { userData, jobData } = (await request.json()) as any;
           if (!userData || !jobData) {
             return new Response(JSON.stringify({ error: "Missing required data" }), { status: 400 });
           }
 
-          const systemInstruction = `You are an expert Executive Recruiter and ATS (Applicant Tracking System) Optimization Specialist.
+          // ✅ PROMPT INJECTION PROTECTION - User input clean karo
+          const clean = (str: string) => String(str || "").replace(/[<>\[\]]/g, "").slice(0, 2000);
+
+          const systemInstruction = `You are an expert Executive Recruiter and ATS Optimization Specialist.
 Your task is to take a user's raw experience, education, and skills, and tailor it specifically for a target job description.
 
 Rules:
-1. MAXIMIZE ATS MATCH: Naturally integrate keywords from the job description into the professional summary and experience bullets.
+1. MAXIMIZE ATS MATCH: Naturally integrate keywords from the job description.
 2. ACTION-ORIENTED: Rewrite bullet points to start with strong action verbs.
-3. TAILORED SUMMARY: Write a focused 2-3 sentence professional summary that positions the user perfectly for the target role.
+3. TAILORED SUMMARY: Write a focused 2-3 sentence professional summary.
 4. NO LIES: Do not invent experiences or skills the user did not provide.
-5. RELEVANCE: Keep only the most relevant education and skills. Group skills logically.
+5. RELEVANCE: Keep only the most relevant education and skills.
 
 Respond ONLY in JSON.`;
 
           const prompt = `TARGET JOB:
-Title: ${jobData.title}
-Company: ${jobData.company}
+Title: ${clean(jobData.title)}
+Company: ${clean(jobData.company)}
 Description:
-${jobData.description}
+${clean(jobData.description)}
 
 USER RAW DATA:
-Name: ${userData.fullName}
-Contact: Email: ${userData.email} | Phone: ${userData.phone} | LinkedIn: ${userData.linkedin}
-Current Role: ${userData.currentRole}
+Name: ${clean(userData.fullName)}
+Contact: Email: ${clean(userData.email)} | Phone: ${clean(userData.phone)} | LinkedIn: ${clean(userData.linkedin)}
+Current Role: ${clean(userData.currentRole)}
 Skills:
-${(userData.skills || []).map((s: string, i: number) => `Group ${i + 1}: ${s}`).join("\n")}
+${(userData.skills || []).map((s: string, i: number) => `Group ${i + 1}: ${clean(s)}`).join("\n")}
 Experience:
-${(userData.experience || []).map((e: string, i: number) => `Role ${i + 1}:\n${e}`).join("\n\n")}
+${(userData.experience || []).map((e: string, i: number) => `Role ${i + 1}:\n${clean(e)}`).join("\n\n")}
 Education:
-${userData.education}
+${clean(userData.education)}
 
 Generate a highly optimized resume in JSON matching:
 {
