@@ -14,9 +14,9 @@ export const Route = createFileRoute("/api/parse-cv-text")({
           }
           const token = authHeader.replace("Bearer ", "");
           const supabase = createClient(
-            process.env.VITE_SUPABASE_URL!,
-            process.env.VITE_SUPABASE_PUBLISHABLE_KEY!
-          );
+  (process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL)!,
+  (process.env.SUPABASE_PUBLISHABLE_KEY || process.env.VITE_SUPABASE_PUBLISHABLE_KEY)!
+);
           const { data: { user }, error: authError } = await supabase.auth.getUser(token);
           if (authError || !user) {
             return new Response(JSON.stringify({ error: "Invalid or expired session. Please log in again." }), { status: 401 });
