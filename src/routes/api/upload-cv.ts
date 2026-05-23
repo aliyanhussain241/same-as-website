@@ -24,10 +24,10 @@ export const Route = createFileRoute("/api/upload-cv")({
             return new Response(JSON.stringify({ error: "Unauthorized. Please log in." }), { status: 401 });
           }
           const token = authHeader.replace("Bearer ", "");
-          const supabase = createClient(
-            process.env.VITE_SUPABASE_URL!,
-            process.env.VITE_SUPABASE_PUBLISHABLE_KEY!
-          );
+        const supabase = createClient(
+  (process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL)!,
+  (process.env.SUPABASE_PUBLISHABLE_KEY || process.env.VITE_SUPABASE_PUBLISHABLE_KEY)!
+);
           const { data: { user }, error: authError } = await supabase.auth.getUser(token);
           if (authError || !user) {
             return new Response(JSON.stringify({ error: "Invalid or expired session. Please log in again." }), { status: 401 });
