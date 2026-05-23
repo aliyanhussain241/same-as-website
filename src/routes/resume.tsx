@@ -14,8 +14,22 @@ import { DesignSelection } from "../app/DesignSelection";
 import { JobForm } from "../app/JobForm";
 import { GeneratingView } from "../app/GeneratingView";
 import { DoneView } from "../app/DoneView";
+import { supabase } from "@/integrations/supabase/client";
 
 type Phase = Step.DETAILS | Step.DESIGN | Step.JOB | Step.GENERATING | Step.DONE;
+
+// ✅ Helper — har API call mein token bhejo
+async function authFetch(url: string, options: RequestInit = {}) {
+  const { data: { session } } = await supabase.auth.getSession();
+  const token = session?.access_token;
+  return fetch(url, {
+    ...options,
+    headers: {
+      ...(options.headers || {}),
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+  });
+}
 
 function ResumeBuilder() {
   const navigate = useNavigate();
@@ -44,8 +58,6 @@ function ResumeBuilder() {
 
   useEffect(() => setMounted(true), []);
 
-  // Adapter that lets child components keep using `setStep(Step.X)`.
-  // In-flow steps update local phase; out-of-flow steps navigate away.
   const setStep = (target: Step) => {
     switch (target) {
       case Step.DETAILS:
@@ -94,6 +106,7 @@ function ResumeBuilder() {
     }
   };
 
+  // ✅ CV Upload — token ke saath
   const handleCVUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -102,7 +115,10 @@ function ResumeBuilder() {
     try {
       const formData = new FormData();
       formData.append("cv", file);
-      const response = await fetch("/api/upload-cv", { method: "POST", body: formData });
+      const response = await authFetch("/api/upload-cv", {
+        method: "POST",
+        body: formData,
+      });
       if (!response.ok) {
         const err = await response.json().catch(() => ({}));
         throw new Error(err.error || "Failed to upload CV");
@@ -126,11 +142,21 @@ function ResumeBuilder() {
     }
   };
 
+  // ✅ Resume Generate — token ke saath
   const handleGenerate = async () => {
     setPhase(Step.GENERATING);
     setError(null);
     try {
-      const data = await generateOptimizedResume(userData, jobData, setStatusMessage);
+      const { data: { session } } = await supabase.auth.getSession();
+      const token = session?.access_token;
+
+      if (!token) {
+        setError("Please log in to generate a resume.");
+        setPhase(Step.JOB);
+        return;
+      }
+
+      const data = await generateOptimizedResume(userData, jobData, setStatusMessage, token);
       setResumeData(data);
       setPhase(Step.DONE);
     } catch (err: any) {
@@ -197,13 +223,14 @@ function ResumeBuilder() {
     </AnimatePresence>
   );
 }
+
 export const Route = createFileRoute("/resume")({
   head: () => ({
     meta: [
       { title: "Create Your Resume — AI Resume Builder | airesumi.com" },
       { name: "description", content: "Build an ATS-optimized resume tailored to your dream role in minutes." },
     ],
-links: [{ rel: "canonical", href: "https://airesumi.com/resume" }],
+    links: [{ rel: "canonical", href: "https://airesumi.com/resume" }],
   }),
   component: ResumeBuilder,
 });
