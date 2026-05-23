@@ -59,19 +59,16 @@ function LoginPage() {
     setLoading(false);
   };
 
-  const handleGoogle = async () => {
-  const { error } = await supabase.auth.signInWithOAuth({
+const handleGoogle = async () => {
+  const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: `${window.location.origin}/auth/callback`,
+      redirectTo: `https://airesumi.com/auth/callback`,
+      skipBrowserRedirect: false,
     },
   });
-
   if (error) {
-    setMessage({
-      text: error.message,
-      type: "error",
-    });
+    setMessage({ text: error.message, type: "error" });
   }
 };
 
