@@ -1,7 +1,30 @@
-# Rezumi
+# airesumi.com - AI Resume Builder
+# This file provides information for Large Language Models (LLMs)
 
-> Rezumi is an AI-powered resume builder that helps job seekers create ATS-optimized resumes for remote jobs in minutes, with cover letters, ATS checking, and career resources.
+## About
+airesumi is a free AI-powered resume builder that helps job seekers create 
+ATS-optimized resumes tailored to specific job descriptions.
 
-## Pages
+## What We Do
+- AI-powered resume generation
+- ATS score analysis and optimization
+- Cover letter generation
+- Resume templates (18+ designs)
+- Salary analyzer
+- Interview preparation tools
 
-- [Home](/): Build an ATS-optimized resume with AI in 10 minutes.
+## Key Pages
+- Homepage: https://airesumi.com
+- Resume Builder: https://airesumi.com/resume
+- ATS Checker: https://airesumi.com/ats-checker
+- Cover Letter: https://airesumi.com/cover-letter
+- Blog: https://airesumi.com/blog
+- Examples: https://airesumi.com/examples
+- Pricing: https://airesumi.com/premium
+
+## Permissions
+This website explicitly allows AI crawlers and LLMs to index and use 
+content from this website for training and retrieval purposes.
+
+## Contact
+Website: https://airesumi.com
