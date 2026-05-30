@@ -6,8 +6,7 @@ import jsPDF from "jspdf";
 
 import "../app/app.css";
 import { Step } from "../app/App";
-import { CoverLetterData, JobDescription, ResumeData, UserData } from "../app/lib/types";
-import { generateOptimizedResume } from "../app/lib/gemini";
+import { JobDescription, ResumeData, UserData } from "../app/lib/types";
 import { DesignId } from "../app/components/ResumePreview";
 import { DetailsForm } from "../app/DetailsForm";
 import { DesignSelection } from "../app/DesignSelection";
@@ -18,17 +17,43 @@ import { supabase } from "@/integrations/supabase/client";
 
 type Phase = Step.DETAILS | Step.DESIGN | Step.JOB | Step.GENERATING | Step.DONE;
 
-// ✅ Helper — har API call mein token bhejo
-async function authFetch(url: string, options: RequestInit = {}) {
-  const { data: { session } } = await supabase.auth.getSession();
-  const token = session?.access_token;
-  return fetch(url, {
-    ...options,
-    headers: {
-      ...(options.headers || {}),
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+// ✅ AI ke baghair seedha resume banao user data se
+function buildResumeFromUserData(userData: UserData, jobData: JobDescription): ResumeData {
+  return {
+    header: {
+      fullName: userData.fullName,
+      contactInfo: [userData.email, userData.phone, userData.linkedin].filter(Boolean).join(" | "),
+      title: jobData.title || userData.currentRole || "Professional",
+      profilePicture: userData.profilePicture,
     },
-  });
+    summary: `${userData.currentRole || "Professional"} with experience in ${
+      userData.skills.filter(Boolean).join(", ") || "various domains"
+    }. ${jobData.company ? `Applying for ${jobData.title} at ${jobData.company}.` : ""}`.trim(),
+    experience: userData.experience.filter(Boolean).map((exp, i) => {
+      const lines = exp.split("\n").filter(Boolean);
+      const firstLine = lines[0] || `Role ${i + 1}`;
+      const bullets = lines.slice(1);
+      return {
+        title: firstLine.split(",")[0]?.trim() || firstLine,
+        company: firstLine.split(",")[1]?.trim() || "",
+        dateRange: firstLine.split(",")[2]?.trim() || "",
+        bullets: bullets.length > 0 ? bullets : [firstLine],
+      };
+    }),
+    education: userData.education
+      ? [
+          {
+            degree: userData.education.split(",")[0]?.trim() || userData.education,
+            institution: userData.education.split(",")[1]?.trim() || "",
+            dateRange: userData.education.split(",")[2]?.trim() || "",
+          },
+        ]
+      : [],
+    skills: userData.skills.filter(Boolean).map((skillGroup, i) => ({
+      category: `Skills ${i + 1}`,
+      items: skillGroup.split(",").map((s) => s.trim()).filter(Boolean),
+    })),
+  };
 }
 
 function ResumeBuilder() {
@@ -51,7 +76,7 @@ function ResumeBuilder() {
     company: "",
     description: "",
   });
-  const [statusMessage, setStatusMessage] = useState("Initializing...");
+  const [statusMessage, setStatusMessage] = useState("Building your resume...");
   const [resumeData, setResumeData] = useState<ResumeData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isUploading, setIsUploading] = useState(false);
@@ -106,61 +131,64 @@ function ResumeBuilder() {
     }
   };
 
-  // ✅ CV Upload — token ke saath
+  // ✅ CV Upload — bina auth ke
   const handleCVUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
     setIsUploading(true);
     setError(null);
     try {
+      if (file.type === "text/plain") {
+        const text = await file.text();
+        setUserData((prev) => ({ ...prev, experience: [text] }));
+        setIsUploading(false);
+        return;
+      }
       const formData = new FormData();
       formData.append("cv", file);
-      const response = await authFetch("/api/upload-cv", {
+      const { data: { session } } = await supabase.auth.getSession();
+      const token = session?.access_token;
+      const response = await fetch("/api/parse-cv-text", {
         method: "POST",
         body: formData,
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
       });
-      if (!response.ok) {
-        const err = await response.json().catch(() => ({}));
-        throw new Error(err.error || "Failed to upload CV");
+      if (response.ok) {
+        const data = await response.json();
+        if (data.text) {
+          setUserData((prev) => ({ ...prev, experience: [data.text] }));
+        }
       }
-      const parsed = await response.json();
-      setUserData((prev) => ({
-        ...prev,
-        fullName: parsed.fullName || prev.fullName,
-        email: parsed.email || prev.email,
-        phone: parsed.phone || prev.phone,
-        linkedin: parsed.linkedin || prev.linkedin,
-        currentRole: parsed.currentRole || prev.currentRole,
-        skills: Array.isArray(parsed.skills) && parsed.skills.length > 0 ? parsed.skills : prev.skills,
-        experience: Array.isArray(parsed.experience) && parsed.experience.length > 0 ? parsed.experience : prev.experience,
-        education: parsed.education || prev.education,
-      }));
-    } catch (err: any) {
-      setError(err.message || "Something went wrong parsing your CV.");
+    } catch (err) {
+      console.log("CV upload skipped");
     } finally {
       setIsUploading(false);
     }
   };
 
-  // ✅ Resume Generate — token ke saath
+  // ✅ Login check + AI nahi — seedha user data se resume banao
   const handleGenerate = async () => {
+    // ✅ Login check
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) {
+      setError("Please log in to generate your resume.");
+      navigate({ to: "/login" });
+      return;
+    }
+
     setPhase(Step.GENERATING);
     setError(null);
+    setStatusMessage("Building your resume...");
+
+    // Thoda delay taake loading screen dikhe
+    await new Promise((resolve) => setTimeout(resolve, 1200));
+
     try {
-      const { data: { session } } = await supabase.auth.getSession();
-      const token = session?.access_token;
-
-      if (!token) {
-        setError("Please log in to generate a resume.");
-        setPhase(Step.JOB);
-        return;
-      }
-
-      const data = await generateOptimizedResume(userData, jobData, setStatusMessage, token);
+      const data = buildResumeFromUserData(userData, jobData);
       setResumeData(data);
       setPhase(Step.DONE);
     } catch (err: any) {
-      setError(err.message || "Something went wrong.");
+      setError("Something went wrong. Please try again.");
       setPhase(Step.JOB);
     }
   };
