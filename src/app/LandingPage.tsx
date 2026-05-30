@@ -68,7 +68,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ setStep }) => {
                <div className="flex items-center gap-2 text-[15px] text-[#4a5568]">
                  <div className="flex text-[#00b67a] gap-1 items-center">
                     <Star size={20} fill="#00b67a" className="text-[#00b67a]" />
-                    <span className="font-bold text-[#1a202c]">Trustpilot</span>
+                    <span className="font-bold text-[#1a202c]"></span>
                  </div>
                  <span>
 ✓ ATS Optimized
